@@ -1,8 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Wanderer
@@ -64,14 +66,20 @@ namespace Wanderer
                 return false;
             }
         }
+        /*
+        public Texture2D GenerateRandomDirection()
+        {
+            return randomTexture;
+        }
+        */
         public Vector2 GenerateRandomPosition()
         {
-            var pos = new Vector2();
+            Vector2 randomPosition = new Vector2();
             do
             {
-                pos = Content[Rnd.Next(0, Size - 1), Rnd.Next(0, Size - 1)];
-            } while (IsWall(pos));
-            return pos;
+                randomPosition = Content[Rnd.Next(0, Size - 1), Rnd.Next(0, Size - 1)];
+            } while (IsWall(randomPosition));
+            return randomPosition;
         }
     }
 }

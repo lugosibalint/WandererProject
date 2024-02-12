@@ -157,13 +157,6 @@
 /processorParam:TextureFormat=Color
 /build:characters/hero-up.png
 
-#begin font.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:font.spritefont
-
 #begin gameitems/floor.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -175,6 +168,13 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:gameitems/floor.png
+
+#begin gameitems/font.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:gameitems/font.spritefont
 
 #begin gameitems/wall.png
 /importer:TextureImporter

@@ -52,7 +52,6 @@ F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\
 F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Content\characters\hero-left.xnb
 F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Content\characters\hero-right.xnb
 F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Content\characters\hero-up.xnb
-F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Content\font.xnb
 F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Content\gameitems\floor.xnb
 F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Content\gameitems\wall.xnb
 F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Wanderer.exe
@@ -81,3 +80,4 @@ F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\obj\
 F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\obj\Debug\net6.0\Wanderer.pdb
 F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\obj\Debug\net6.0\Wanderer.genruntimeconfig.cache
 F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\obj\Debug\net6.0\ref\Wanderer.dll
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Content\gameitems\font.xnb

@@ -64,45 +64,58 @@ namespace Wanderer
             //Falak generálása
             grid.GenerateWalls();
 
-            //Load font
-            textTexture = Content.Load<SpriteFont>("font");
-         
             //Load textures
             LoadTextures();
 
             //Starting positions
-            hero.position = grid.GenerateRandomPosition();
-            ghost.position = grid.GenerateRandomPosition();
+            hero.Position = grid.GenerateRandomPosition();
+            ghost.Position = grid.GenerateRandomPosition();
+
+            //Starting directions
+            hero.Texture = heroTexture.down;
+            ghost.Texture = ghostTexture.down;
+             //* hero.Texture = grid.GenerateRandomDirection();
+             //* hero.Texture = grid.GenerateRandomDirection();        
 
             // TODO: use this.Content to load your game content here
         }
 
         protected override void Update(GameTime gameTime)
         {
+            _spriteBatch.Begin();
             KeyboardState keyboardState = Keyboard.GetState();
 
             if (keyboardState.IsKeyDown(Keys.D) && canMove)
             {
                 hero.Move("right", grid);
-                
+                ChangeTexture(heroTexture.right,hero.Position);
                 Timer(0.2f);
+                ghost.Steps++;
             }
             if (keyboardState.IsKeyDown(Keys.A) && canMove)
             {
                 hero.Move("left", grid);
+                ChangeTexture(heroTexture.left, hero.Position);
                 Timer(0.2f);
+                ghost.Steps++;
             }
             if (keyboardState.IsKeyDown(Keys.W) && canMove)
             {
                 hero.Move("up", grid);
+                ChangeTexture(heroTexture.up, hero.Position);
                 Timer(0.2f);
+                ghost.Steps++;
             }
             if (keyboardState.IsKeyDown(Keys.S) && canMove)
             {
                 hero.Move("down", grid);
+                ChangeTexture(heroTexture.down, hero.Position);
                 Timer(0.2f);
+                ghost.Steps++;
             }
 
+
+            ghost.MoveRandomly(grid);  
 
             if (keyboardState.IsKeyDown(Keys.K) && canMove)
             {
@@ -110,6 +123,7 @@ namespace Wanderer
                 Timer(0.2f);
             }
             
+            _spriteBatch.End();
             base.Update(gameTime);
         }
 
@@ -122,8 +136,8 @@ namespace Wanderer
                 _spriteBatch.Begin();                               
 
                 DrawBackground();                                         //Kirajzoljuk a gridet
-                DrawTexture(heroTexture.down, hero.position);             //Kirajzoljuk a Herot
-                DrawTexture(ghostTexture.down, ghost.position);           //Kirajzoljuk a Ghostot
+                DrawTexture(hero.Texture, hero.Position);             //Kirajzoljuk a Herot
+                DrawTexture(ghost.Texture, ghost.Position);           //Kirajzoljuk a Ghostot
                 DrawCharacterStats(hero);                                 //Kirajzoljuk a hero statját
 
                 // Végződj a rajzolással itt
@@ -143,7 +157,19 @@ namespace Wanderer
         }
         public void DrawTexture(Texture2D charTexture, Vector2 charPos)
         {
-            
+            if (charTexture == null)
+            {
+                LoadTextures();
+                _spriteBatch.Draw(charTexture, charPos, Color.White);
+            }
+            else
+            {
+                _spriteBatch.Draw(charTexture, charPos, Color.White);
+            }
+        }
+        public void ChangeTexture(Texture2D charTexture, Vector2 charPos)
+        {
+
             _spriteBatch.Draw(charTexture, charPos, Color.White);
         }
         public void DrawBackground()
@@ -170,12 +196,14 @@ namespace Wanderer
             heroTexture.up = Content.Load<Texture2D>("hero-up");
             heroTexture.left = Content.Load<Texture2D>("hero-left");
             heroTexture.right = Content.Load<Texture2D>("hero-right");
+            hero.Textures = heroTexture;
 
             ghostTexture = new CharacterTextures();
             ghostTexture.down = Content.Load<Texture2D>("ghost-down");
             ghostTexture.up = Content.Load<Texture2D>("ghost-up");
             ghostTexture.left = Content.Load<Texture2D>("ghost-left");
             ghostTexture.right = Content.Load<Texture2D>("ghost-right");
+            ghost.Textures = ghostTexture;
 
             bossTexture = new CharacterTextures();
             bossTexture.down = Content.Load<Texture2D>("boss-down");
@@ -184,8 +212,9 @@ namespace Wanderer
             bossTexture.right = Content.Load<Texture2D>("boss-right");
 
             Content.RootDirectory = "Content/gameitems";
-            wallTexture = Content.Load<Texture2D>("wall");                    //Wall
+            wallTexture = Content.Load<Texture2D>("wall");                      //Wall
             floorTexture = Content.Load<Texture2D>("floor");                    //Floor
+            textTexture = Content.Load<SpriteFont>("font");                     //Font
             loaded = true;
 
         }

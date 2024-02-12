@@ -18,12 +18,16 @@ namespace Wanderer
         public int HP { get; set; }
         public int DP { get; set; }
         public int SP { get; set; }
-        public Vector2 position { get; set; }
+        public Vector2 Position { get; set; }
+        public Texture2D Texture { get; set; }
+        public CharacterTextures Textures { get; set; }
 
         public Character(int level)
         {
             this.Level = level;
-            this.position = new Vector2();
+            this.Position = new Vector2();
+            this.Texture = Textures.down;
+            
             InitializeStats();
         }
 
@@ -47,85 +51,36 @@ namespace Wanderer
         }
         public void Move(string direction, Grid grid)
         {
-            /*
-            int colIndex = (int)Math.Floor((this.position.X - 440) / 72); //X
-            int rowIndex = (int)Math.Floor((this.position.Y - 125) / 72); //Y
-            
-            if (direction=="right")
-            {
-                if (rowIndex != grid.Size-1)
-                {
-                    Vector2 newPosition = grid.Content[colIndex+1, rowIndex];
-                    if (!grid.IsWall(newPosition))
-                    {
-                        colIndex += 1;
-                        position = grid.Content[colIndex, rowIndex];
-                    }
-                }
-            }
-            if (direction == "left")
-            {
-                if (rowIndex != 0)
-                {
-                    Vector2 newPosition = grid.Content[colIndex, rowIndex + 1];
-                    if (!grid.IsWall(newPosition))
-                    {
-                        position = newPosition;
-                    }
-                }
-            }
-            if (direction == "up")
-            {
-                if (rowIndex != grid.Size - 1)
-                {
-                    Vector2 newPosition = grid.Content[colIndex, rowIndex + 1];
-                    if (!grid.IsWall(newPosition))
-                    {
-                        position = newPosition;
-                    }
-                }
-            }
-            if (direction == "down")
-            {
-                if (rowIndex != grid.Size - 1)
-                {
-                    Vector2 newPosition = grid.Content[colIndex, rowIndex + 1];
-                    if (!grid.IsWall(newPosition))
-                    {
-                        position = newPosition;
-                    }
-                }
-            }
+            int colIndex = (int)Math.Floor((this.Position.X - 440) / 72);
+            int rowIndex = (int)Math.Floor((this.Position.Y - 125) / 72);
 
-            //if (!grid.IsWall(newpos) || colIndex != 0 || colIndex != grid.Size - 1 || rowIndex != 0 || colIndex != grid.Size - 1)
-
-            */
-            int colIndex = (int)Math.Floor((this.position.X - 440) / 72);
-            int rowIndex = (int)Math.Floor((this.position.Y - 125) / 72);
-
-            Vector2 newPosition = this.position;
+            Vector2 newPosition = this.Position;
 
             if (direction == "right" && colIndex < grid.Content.GetLength(1) - 1)
             {
+                this.Texture = this.Textures.right;
                 newPosition.X += 72;
             }
             else if (direction == "left" && colIndex > 0)
             {
+                this.Texture = this.Textures.left;
                 newPosition.X -= 72;
             }
             else if (direction == "down" && rowIndex < grid.Content.GetLength(0) - 1)
             {
+                this.Texture = this.Textures.down;
                 newPosition.Y += 72;
             }
             else if (direction == "up" && rowIndex > 0)
             {
+                this.Texture = this.Textures.up;
                 newPosition.Y -= 72;
             }
 
             // Ellenőrizze, hogy az új pozíció fal-e
             if (!grid.IsWall(newPosition))
             {
-                this.position = newPosition;
+                this.Position = newPosition;
             }
         }
     }
