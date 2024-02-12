@@ -28,9 +28,6 @@ namespace Wanderer
         Grid grid = new Grid(10);
         private bool canMove = true;
 
-        private List<Vector2> walls;
-        Random rnd;
-
         //Game állapota
         public GameState _currentGameState;
         public enum GameState
@@ -114,6 +111,12 @@ namespace Wanderer
                 ghost.Steps++;
             }
 
+            //Fight
+            if (hero.Position == ghost.Position)
+            {
+                hero.Fight(ghost);
+            }
+
 
             ghost.MoveRandomly(grid);  
 
@@ -139,7 +142,13 @@ namespace Wanderer
                 DrawTexture(hero.Texture, hero.Position);             //Kirajzoljuk a Herot
                 DrawTexture(ghost.Texture, ghost.Position);           //Kirajzoljuk a Ghostot
                 DrawCharacterStats(hero);                                 //Kirajzoljuk a hero statját
+                DrawCharacterStats(ghost);                                 //Kirajzoljuk a hero statját
 
+                if (hero.IsDead())
+                {
+                    // Ha a hős meghalt, állítsuk vissza a játékállapotot a főmenüre
+                    SetGameState(GameState.MainMenu);
+                }
                 // Végződj a rajzolással itt
                 _spriteBatch.End();                                 
             }
@@ -224,9 +233,8 @@ namespace Wanderer
         }
         public void DrawCharacterStats(Character character)
         {
-
             string characterStats = $" Level: {character.Level} \n HP: {character.HP} / {character.MaxHP} \n DP: {character.DP} \n SP: {character.SP}";
-            _spriteBatch.DrawString(textTexture, characterStats, new Vector2(10, 10), Color.White);
+            _spriteBatch.DrawString(textTexture, characterStats, character.Position, Color.Black);
         }
         public void WindowSize(GraphicsDeviceManager _graphics)
         {

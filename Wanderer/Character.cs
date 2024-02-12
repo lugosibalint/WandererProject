@@ -11,8 +11,6 @@ namespace Wanderer
 {
     public class Character 
     {
-        private SpriteBatch _spriteBatch;
-
         public int Level { get; set; }
         public int MaxHP { get; set; }
         public int HP { get; set; }
@@ -33,21 +31,90 @@ namespace Wanderer
 
         public void InitializeStats()
         {
-            Random random = new Random();
-            MaxHP = 20 + 3 * random.Next(1, 7);
-            DP = 2 * random.Next(1, 7);
-            SP = 5 + random.Next(1, 7);
+            MaxHP = 20 + 3 * DiceRoll(6);
+            DP = 2 * DiceRoll(6);
+            SP = 5 + DiceRoll(6);
             HP = MaxHP;
 
         }
-        
+        public void Fight(Character opponent)
+        {
+            // Támadásnál a támadó értéke (SV) az SP és a d6 kétszeresének összege
+            int attackValue = 2 * DiceRoll(6) + this.SP;
+
+            // A támadás sikeres, ha az attackValue nagyobb, mint az ellenfél DP-je
+            if (attackValue > opponent.DP)
+            {
+                // Sikeres támadás, csökken az ellenfél HP-ja
+                int damage = attackValue - opponent.DP;
+                opponent.HP -= damage;
+
+                // Ellenfél HP-ja nem lehet negatív
+                if (opponent.HP < 0)
+                {
+                    opponent.HP = 0;
+                }
+            }
+        }
+        private bool NextLevel()
+        {
+            // Ellenőrizzük, hogy a kulcsot hordozó szörny és a boss már meg van-e ölve
+            bool keyMonsterDead = /* implementáció: ellenőrizd a kulcsot hordozó szörnyt */false;
+            bool bossDead = /* implementáció: ellenőrizd a bosst */false;
+
+            if (keyMonsterDead && bossDead)
+            {
+                // Következő pálya inicializálása
+                InitializeNextLevel();
+
+                // Gyógyulás esélyeinek ellenőrzése és végrehajtása
+                Random random = new Random();
+                int chance = random.Next(1, 101);
+
+                if (chance <= 10)
+                {
+                    // 10% esély az összes HP visszatöltésére
+                    this.HP = this.MaxHP;
+                }
+                else if (chance <= 50)
+                {
+                    // 40% esély a HP harmadának a visszatöltésére
+                    this.HP += this.MaxHP / 3;
+                    if (this.HP > this.MaxHP)
+                        this.HP = this.MaxHP;
+                }
+                else
+                {
+                    // 50% esély a HP 10%-nak a visszatöltésére
+                    this.HP += this.MaxHP / 10;
+                    if (this.HP > this.MaxHP)
+                        this.HP = this.MaxHP;
+                }
+
+                // Szintlépés
+                this.LevelUp();
+
+                return true; // Következő pályára lépés sikeres
+            }
+
+            return false; // Még nem ölték meg mindkét fontos szörnyet
+        }
+        private void InitializeNextLevel()
+        {
+            // Implementáld a következő pálya inicializálását
+            // Frissítsd a szörnyeket, a pályát, stb.
+        }
         public void LevelUp()
         {
             Level++;
-            MaxHP += new Random().Next(1, 7);
-            DP += new Random().Next(1, 7);
-            SP += new Random().Next(1, 7);
+            MaxHP += DiceRoll(6);
+            DP += DiceRoll(6);
+            SP += DiceRoll(6);
             HP = MaxHP;
+        }
+        public bool IsDead()
+        {
+            return HP <= 0;
         }
         public void Move(string direction, Grid grid)
         {
@@ -82,6 +149,11 @@ namespace Wanderer
             {
                 this.Position = newPosition;
             }
+        }
+        public int DiceRoll(int Size)
+        {
+            Random rnd = new Random();
+            return rnd.Next(1, Size);
         }
     }
 
