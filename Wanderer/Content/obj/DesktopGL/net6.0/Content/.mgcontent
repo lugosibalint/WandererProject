@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>DesktopGL</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/Wanderer/Wanderer/Content/characters/boss-down.png</File>
+    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/Wanderer/Wanderer/Content/characters/boss-left.png</File>
+    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/Wanderer/Wanderer/Content/characters/boss-right.png</File>
+    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/Wanderer/Wanderer/Content/characters/boss-up.png</File>
+    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/Wanderer/Wanderer/Content/characters/ghost-down.png</File>
+    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/Wanderer/Wanderer/Content/characters/ghost-left.png</File>
+    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/Wanderer/Wanderer/Content/characters/ghost-right.png</File>
+    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/Wanderer/Wanderer/Content/characters/ghost-up.png</File>
+    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/Wanderer/Wanderer/Content/characters/hero-down.png</File>
+    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/Wanderer/Wanderer/Content/characters/hero-left.png</File>
+    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/Wanderer/Wanderer/Content/characters/hero-right.png</File>
+    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/Wanderer/Wanderer/Content/characters/hero-up.png</File>
+    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/Wanderer/Wanderer/Content/font.spritefont</File>
+    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/Wanderer/Wanderer/Content/gameitems/floor.png</File>
+    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/Wanderer/Wanderer/Content/gameitems/wall.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>
