@@ -26,6 +26,8 @@ namespace Wanderer
         public void Update(GameTime gameTime)
         {
             // Ellenőrizzük a billentyűzet állapotát, és kezeljük a választásokat
+
+            /*
             KeyboardState keyboardState = Keyboard.GetState();
 
             if (keyboardState.IsKeyDown(Keys.Enter))
@@ -38,6 +40,8 @@ namespace Wanderer
                 // Kilépés a játékból
                 ExitGame();
             }
+
+            */
         }
 
         public void Draw()

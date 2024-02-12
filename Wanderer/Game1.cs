@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Wanderer
 {
@@ -19,13 +20,13 @@ namespace Wanderer
         private CharacterTextures bossTexture;//boss
         private bool loaded;
 
-        //Positions
-        private Vector2 heroPos;
-        private Vector2 ghostPos;
+        //Karakterek
+        Hero hero = new Hero(1);
+        Monster ghost = new Monster(1);
 
         //Játékmenet
-        private Vector2[,] grid;
-        private int gridSize;
+        Grid grid = new Grid(10);
+        private bool canMove = true;
 
         private List<Vector2> walls;
         Random rnd;
@@ -38,9 +39,6 @@ namespace Wanderer
             Playing,
             // etc...
         }
-
-        //Karakterek
-        private Character hero = new Character(1);
 
         public Game1()
         {
@@ -61,11 +59,10 @@ namespace Wanderer
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             //Grid méret beállítás
-            gridSize = 10;
-            CreateGrid(gridSize);
+            grid.CreateGrid();
 
             //Falak generálása
-            GenerateWalls(gridSize);
+            grid.GenerateWalls();
 
             //Load font
             textTexture = Content.Load<SpriteFont>("font");
@@ -74,8 +71,8 @@ namespace Wanderer
             LoadTextures();
 
             //Starting positions
-            heroPos = GenerateRandomPosition();
-            ghostPos = GenerateRandomPosition();
+            hero.position = grid.GenerateRandomPosition();
+            ghost.position = grid.GenerateRandomPosition();
 
             // TODO: use this.Content to load your game content here
         }
@@ -83,21 +80,36 @@ namespace Wanderer
         protected override void Update(GameTime gameTime)
         {
             KeyboardState keyboardState = Keyboard.GetState();
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back ==
-                ButtonState.Pressed || 
-                keyboardState.IsKeyDown(Keys.Escape))
-            {
 
-                SetGameState(GameState.MainMenu);
+            if (keyboardState.IsKeyDown(Keys.D) && canMove)
+            {
+                hero.Move("right", grid);
+                
+                Timer(0.2f);
+            }
+            if (keyboardState.IsKeyDown(Keys.A) && canMove)
+            {
+                hero.Move("left", grid);
+                Timer(0.2f);
+            }
+            if (keyboardState.IsKeyDown(Keys.W) && canMove)
+            {
+                hero.Move("up", grid);
+                Timer(0.2f);
+            }
+            if (keyboardState.IsKeyDown(Keys.S) && canMove)
+            {
+                hero.Move("down", grid);
+                Timer(0.2f);
             }
 
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back ==
-                ButtonState.Pressed ||
-                keyboardState.IsKeyDown(Keys.D))
-            {
-                Move("right", heroPos);
-            }
 
+            if (keyboardState.IsKeyDown(Keys.K) && canMove)
+            {
+                grid.GenerateWalls();
+                Timer(0.2f);
+            }
+            
             base.Update(gameTime);
         }
 
@@ -109,67 +121,36 @@ namespace Wanderer
                 // Kezdd el a rajzolást itt
                 _spriteBatch.Begin();                               
 
-                DrawBackground(gridSize);                           //Kirajzoljuk a gridet
-                DrawTexture(heroTexture.down, heroPos);             //Kirajzoljuk a Herot
-                DrawTexture(ghostTexture.down, ghostPos);           //Kirajzoljuk a Ghostot
-                DrawCharacterStats(hero);                           //Kirajzoljuk a hero statját
+                DrawBackground();                                         //Kirajzoljuk a gridet
+                DrawTexture(heroTexture.down, hero.position);             //Kirajzoljuk a Herot
+                DrawTexture(ghostTexture.down, ghost.position);           //Kirajzoljuk a Ghostot
+                DrawCharacterStats(hero);                                 //Kirajzoljuk a hero statját
 
                 // Végződj a rajzolással itt
                 _spriteBatch.End();                                 
             }
             base.Draw(gameTime);
         }
-        public void Move(string direction, Vector2 charPos)
+        public void Timer(float moveDelay)
         {
-            if (direction == "right")
-            {
-                
-            }
-        }
-        public Vector2 GenerateRandomPosition()
-        {
-            return grid[rnd.Next(0, gridSize - 1), rnd.Next(0, gridSize - 1)];
+            canMove = false;
+            // Indítsd el az időzítőt, ami után újra mozgás lesz engedélyezve
+            System.Timers.Timer timer = new System.Timers.Timer(moveDelay * 1000); // Átváltás másodpercről milliszekundumra
+            timer.Elapsed += (sender, e) => canMove = true;
+            timer.AutoReset = false; // Csak egyszer fut le
+            timer.Start();
+
         }
         public void DrawTexture(Texture2D charTexture, Vector2 charPos)
         {
             
             _spriteBatch.Draw(charTexture, charPos, Color.White);
         }
-        public void GenerateWalls(int gridSize)
+        public void DrawBackground()
         {
-            rnd = new Random();
-            walls = new List<Vector2>();
-            
-
-            for (int i = 0; i < gridSize; i++)
+            foreach (var item in grid.Content)
             {
-                for (int j = 0; j < gridSize; j++)
-                {
-                    int rndnum = rnd.Next(1, 10);
-                    if (rndnum > 7)
-                    {
-                        Vector2 wallPosition = grid[i, j];
-                        walls.Add(wallPosition);
-                    }
-                }
-            }
-        }
-        public bool IsWall(Vector2 vector)
-        {
-            if (walls.Contains(vector))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        public void DrawBackground(int gridSize)
-        {
-            foreach (var item in grid)
-            {
-                if (IsWall(item))
+                if (grid.IsWall(item))
                 {
 
                     _spriteBatch.Draw(wallTexture, item, Color.White);
@@ -178,31 +159,6 @@ namespace Wanderer
                 {
 
                     _spriteBatch.Draw(floorTexture, item, Color.White);
-                }
-            }
-        }
-        public void CreateGrid(int gridSize)
-        {
-            grid = new Vector2[gridSize, gridSize];
-            for (int i = 0; i < gridSize; i++)
-            {
-                for (int j = 0; j < gridSize; j++)
-                {
-                    Vector2 coords = new Vector2(); // Minden cellához új objektum
-                    coords.X = 440 + j * 72;
-                    coords.Y = 125 + i * 72;
-                    grid[i, j] = coords;
-                    
-                    /*
-                    if (walls[wallidx])
-                    {
-                        _spriteBatch.Draw(wallTexture, new Vector2(coords.X, coords.Y), Color.White);
-                    }
-                    else
-                    {
-                        _spriteBatch.Draw(floorTexture, new Vector2(coords.X, coords.Y), Color.White);
-                    }
-                    */
                 }
             }
         }

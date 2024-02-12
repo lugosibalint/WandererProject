@@ -39,3 +39,45 @@ C:\Users\tanulo\Desktop\Lugosi Bálint\Wanderer\Wanderer\Wanderer\obj\Debug\net6
 C:\Users\tanulo\Desktop\Lugosi Bálint\Wanderer\Wanderer\Wanderer\obj\Debug\net6.0\Wanderer.pdb
 C:\Users\tanulo\Desktop\Lugosi Bálint\Wanderer\Wanderer\Wanderer\obj\Debug\net6.0\Wanderer.genruntimeconfig.cache
 C:\Users\tanulo\Desktop\Lugosi Bálint\Wanderer\Wanderer\Wanderer\obj\Debug\net6.0\ref\Wanderer.dll
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Content\moor.xnb
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Content\characters\boss-down.xnb
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Content\characters\boss-left.xnb
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Content\characters\boss-right.xnb
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Content\characters\boss-up.xnb
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Content\characters\ghost-down.xnb
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Content\characters\ghost-left.xnb
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Content\characters\ghost-right.xnb
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Content\characters\ghost-up.xnb
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Content\characters\hero-down.xnb
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Content\characters\hero-left.xnb
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Content\characters\hero-right.xnb
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Content\characters\hero-up.xnb
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Content\font.xnb
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Content\gameitems\floor.xnb
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Content\gameitems\wall.xnb
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Wanderer.exe
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Wanderer.deps.json
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Wanderer.runtimeconfig.json
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Wanderer.dll
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Wanderer.pdb
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\MonoGame.Framework.dll
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\runtimes\linux-x64\native\libSDL2-2.0.so.0
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\runtimes\linux-x64\native\libopenal.so.1
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\runtimes\osx\native\libSDL2.dylib
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\runtimes\osx\native\libopenal.1.dylib
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\runtimes\win-x64\native\SDL2.dll
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\runtimes\win-x64\native\soft_oal.dll
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\runtimes\win-x86\native\SDL2.dll
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\runtimes\win-x86\native\soft_oal.dll
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\obj\Debug\net6.0\Wanderer.csproj.AssemblyReference.cache
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\obj\Debug\net6.0\Wanderer.GeneratedMSBuildEditorConfig.editorconfig
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\obj\Debug\net6.0\Wanderer.AssemblyInfoInputs.cache
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\obj\Debug\net6.0\Wanderer.AssemblyInfo.cs
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\obj\Debug\net6.0\Wanderer.csproj.CoreCompileInputs.cache
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\obj\Debug\net6.0\Wanderer.sourcelink.json
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\obj\Debug\net6.0\Wanderer.csproj.CopyComplete
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\obj\Debug\net6.0\Wanderer.dll
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\obj\Debug\net6.0\refint\Wanderer.dll
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\obj\Debug\net6.0\Wanderer.pdb
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\obj\Debug\net6.0\Wanderer.genruntimeconfig.cache
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\obj\Debug\net6.0\ref\Wanderer.dll

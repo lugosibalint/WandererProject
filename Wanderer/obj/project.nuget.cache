@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "SjLIXnA4sOkowdSdT6ExWJEZpj3EvYCvFSXJGB0RBu3ql4rB8+VnoCoLgCPuZxM7rYE8/vzuJuqsCHacS5pmDg==",
+  "dgSpecHash": "lwUSqVWVyTr9360iwtFFJxzFn0QuWpTx7jVU+iB39tpUtAhURX2PN5pnNlOxr11QC+cDpzNKLKtT3FgA3WVQ8g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\tanulo\\Desktop\\Lugosi Bálint\\Wanderer\\Wanderer\\Wanderer\\Wanderer.csproj",
+  "projectFilePath": "F:\\FÁJLOK\\Dokumentumok\\Suli\\lionsdale\\c#\\Wanderer\\WandererProject\\Wanderer\\Wanderer.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\tanulo\\.nuget\\packages\\monogame.content.builder.task\\3.8.1.303\\monogame.content.builder.task.3.8.1.303.nupkg.sha512",
-    "C:\\Users\\tanulo\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512"
+    "C:\\Users\\lugib\\.nuget\\packages\\monogame.content.builder.task\\3.8.1.303\\monogame.content.builder.task.3.8.1.303.nupkg.sha512",
+    "C:\\Users\\lugib\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512"
   ],
   "logs": []
 }

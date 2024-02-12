@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/Wanderer/Wanderer/Content/characters/ghost-down.png</SourceFile>
+  <SourceFile>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/characters/ghost-down.png</SourceFile>
   <SourceTime>2024-01-17T13:13:32+01:00</SourceTime>
-  <DestFile>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/Wanderer/Wanderer/Content/bin/DesktopGL/Content/characters/ghost-down.xnb</DestFile>
-  <DestTime>2024-02-12T11:24:06.344039+01:00</DestTime>
+  <DestFile>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/bin/DesktopGL/Content/characters/ghost-down.xnb</DestFile>
+  <DestTime>2024-02-12T16:01:43.0344909+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
