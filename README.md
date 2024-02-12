@@ -20,8 +20,6 @@ gondolkodjatok el rajta. Persze végeredményben egy kész, működő játékot 
  
 ### Projekt leírás (minimum követelmények)
  
-![hero map](img/hero-map.png)
- 
 #### A játék képernyő
  
 - A képernyő tartalmazza az első pályát, ami egy 10 x 10-es mező, amin a
