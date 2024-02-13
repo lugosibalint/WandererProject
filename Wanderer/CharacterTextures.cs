@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,9 @@ namespace Wanderer
             this.down = down;
             this.left = left;
             this.right = right;
+        }
+        public void FileRead()
+        {
         }
     }
 }

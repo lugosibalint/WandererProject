@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 
 namespace Wanderer
 {
@@ -24,6 +25,7 @@ namespace Wanderer
         private bool loaded;
 
         //Karakterek
+        List<Monster> monsters = new List<Monster>();
         Hero hero = new Hero(1);
         Monster ghost = new Monster(1);
         Monster ghost2 = new Monster(1);
@@ -69,21 +71,12 @@ namespace Wanderer
             //Load textures
             LoadTextures();
 
+            //generate characters
+            GenerateCharacters(5);
+
             //Starting positions
-            hero.Position = grid.GenerateRandomPosition();
-            ghost.Position = grid.GenerateRandomPosition();
-            ghost2.Position = grid.GenerateRandomPosition();
-            skeleton.Position = grid.GenerateRandomPosition();
-            boss.Position = grid.GenerateRandomPosition();
 
             //Starting directions
-            hero.Texture = heroTexture.down;
-            ghost.Texture = ghostTexture.down;
-            ghost2.Texture = ghost2Texture.down;
-            skeleton.Texture = skeletonTexture.down;
-            boss.Texture = bossTexture.down;
-            //* hero.Texture = grid.GenerateRandomDirection();
-            //* hero.Texture = grid.GenerateRandomDirection();        
 
             // TODO: use this.Content to load your game content here
         }
@@ -98,11 +91,10 @@ namespace Wanderer
                 hero.Move("right", grid);
                 ChangeTexture(heroTexture.right,hero);
                 Timer(0.2f, hero);
-                ghost.Steps++;
-                ghost2.Steps++;
-                skeleton.Steps++;
-                boss.Steps++;
-
+                foreach (var item in monsters.Skip(1))
+                {
+                    item.Steps++;
+                }
             }
             if (keyboardState.IsKeyDown(Keys.A) && hero.CanMove)
             {
@@ -351,6 +343,19 @@ namespace Wanderer
             }
 
             //_spriteBatch.DrawString(textTexture, characterStats, new Vector2(10,10), Color.Black);
+        }
+        public void GenerateCharacters(int count)
+        {
+            Hero hero = new Hero(1);
+            hero.Position = grid.GenerateRandomPosition();
+            hero.Textures = grid.PickHeroTexture(Content);
+            for (int i = 0; i < count; i++)
+            {
+                Monster monster = new Monster(1); // Adj megfelelő paramétereket
+                monster.Position = grid.GenerateRandomPosition();
+                monster.Textures = grid.PickRandomTexture(Content);
+                monsters.Add(monster);
+            }
         }
         public void WindowSize(GraphicsDeviceManager _graphics)
         {

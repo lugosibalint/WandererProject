@@ -1,0 +1,5 @@
+alien-down alien-up alien-left alien-right
+boss-down boss-up boss-left boss-right
+fogoni-down fogoni-up fogoni-left fogoni-right
+ghost-down ghost-up ghost-left ghost-right
+ghost2-down ghost2-up ghost2-left ghost2-right
