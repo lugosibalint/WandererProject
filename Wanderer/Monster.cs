@@ -15,7 +15,7 @@ namespace Wanderer
         public Monster(int level) : base(level)
         {
             Level = level;
-
+            SP = 2 + DiceRoll(6);
             Steps = 0;
             LastStep = 0;
             StepsPerMove = 2;

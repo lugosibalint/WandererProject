@@ -12,6 +12,9 @@ namespace Wanderer
     {
         public Hero(int level) : base(level)
         {
+            MaxHP = 20 + 5 * DiceRoll(6);
+            HP = MaxHP;
+            InitializeStats();
         }
     }
 }

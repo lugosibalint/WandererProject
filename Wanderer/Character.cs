@@ -40,7 +40,7 @@ namespace Wanderer
         public void Fight(Character opponent)
         {
             // Támadásnál a támadó értéke (SV) az SP és a d6 kétszeresének összege
-            int attackValue = 2 * DiceRoll(6) + this.SP;
+            int attackValue = this.SP + DiceRoll(6) + DiceRoll(6);
 
             // A támadás sikeres, ha az attackValue nagyobb, mint az ellenfél DP-je
             if (attackValue > opponent.DP)
@@ -53,6 +53,12 @@ namespace Wanderer
                 if (opponent.HP < 0)
                 {
                     opponent.HP = 0;
+                }
+
+                // Ha nem halt meg a hős, akkor szintet lép
+                if (!this.IsDead())
+                {
+                    this.LevelUp();
                 }
             }
         }
