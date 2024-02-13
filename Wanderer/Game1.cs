@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Graphics.PackedVector;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
@@ -17,17 +18,20 @@ namespace Wanderer
         private Texture2D floorTexture;//talaj
         private CharacterTextures heroTexture;//hero
         private CharacterTextures ghostTexture;//szellem
+        private CharacterTextures ghost2Texture;
+        private CharacterTextures skeletonTexture;
         private CharacterTextures bossTexture;//boss
         private bool loaded;
 
         //Karakterek
         Hero hero = new Hero(1);
         Monster ghost = new Monster(1);
+        Monster ghost2 = new Monster(1);
+        Monster skeleton = new Monster(1);
+        Monster boss = new Monster(1);
 
         //Játékmenet
         Grid grid = new Grid(10);
-        private bool canMove = true;
-        private bool canFight = true;
 
         //Game állapota
         public GameState _currentGameState;
@@ -68,12 +72,18 @@ namespace Wanderer
             //Starting positions
             hero.Position = grid.GenerateRandomPosition();
             ghost.Position = grid.GenerateRandomPosition();
+            ghost2.Position = grid.GenerateRandomPosition();
+            skeleton.Position = grid.GenerateRandomPosition();
+            boss.Position = grid.GenerateRandomPosition();
 
             //Starting directions
             hero.Texture = heroTexture.down;
             ghost.Texture = ghostTexture.down;
-             //* hero.Texture = grid.GenerateRandomDirection();
-             //* hero.Texture = grid.GenerateRandomDirection();        
+            ghost2.Texture = ghost2Texture.down;
+            skeleton.Texture = skeletonTexture.down;
+            boss.Texture = bossTexture.down;
+            //* hero.Texture = grid.GenerateRandomDirection();
+            //* hero.Texture = grid.GenerateRandomDirection();        
 
             // TODO: use this.Content to load your game content here
         }
@@ -83,62 +93,92 @@ namespace Wanderer
             _spriteBatch.Begin();
             KeyboardState keyboardState = Keyboard.GetState();
 
-            if (keyboardState.IsKeyDown(Keys.D) && canMove)
+            if (keyboardState.IsKeyDown(Keys.D) && hero.CanMove)
             {
                 hero.Move("right", grid);
                 ChangeTexture(heroTexture.right,hero);
-                Timer(0.2f);
+                Timer(0.2f, hero);
                 ghost.Steps++;
+                ghost2.Steps++;
+                skeleton.Steps++;
+                boss.Steps++;
+
             }
-            if (keyboardState.IsKeyDown(Keys.A) && canMove)
+            if (keyboardState.IsKeyDown(Keys.A) && hero.CanMove)
             {
                 hero.Move("left", grid);
                 ChangeTexture(heroTexture.left, hero);
-                Timer(0.2f);
+                Timer(0.2f, hero);
                 ghost.Steps++;
+                ghost2.Steps++;
+                skeleton.Steps++;
+                boss.Steps++;
             }
-            if (keyboardState.IsKeyDown(Keys.W) && canMove)
+            if (keyboardState.IsKeyDown(Keys.W) && hero.CanMove)
             {
                 hero.Move("up", grid);
                 ChangeTexture(heroTexture.up, hero);
-                Timer(0.2f);
+                Timer(0.2f, hero);
                 ghost.Steps++;
+                ghost2.Steps++;
+                skeleton.Steps++;
+                boss.Steps++;
             }
-            if (keyboardState.IsKeyDown(Keys.S) && canMove)
+            if (keyboardState.IsKeyDown(Keys.S) && hero.CanMove)
             {
                 hero.Move("down", grid);
                 ChangeTexture(heroTexture.down, hero);
-                Timer(0.2f);
+                Timer(0.2f, hero);
                 ghost.Steps++;
+                ghost2.Steps++;
+                skeleton.Steps++;
+                boss.Steps++;
             }
 
             //Fights
             if (hero.Position == ghost.Position )
             {
-                if (keyboardState.IsKeyDown(Keys.Space) && canMove)
+                if (keyboardState.IsKeyDown(Keys.Space) && hero.CanFight)
                 {
                     hero.Fight(ghost);
-                    Timer(0.2f);
+                    Timer(0.2f, hero);
                     ghost.Steps++;
                 }
-                if (canFight)
+                if (ghost.CanFight)
                 {
                     ghost.Fight(hero);
-                    Timer(0.3f);
+                    Timer(1.2f, ghost);
                 }
             }
 
 
 
-            ghost.MoveRandomly(grid);  
+            ghost.MoveRandomly(grid);
+            ghost2.MoveRandomly(grid);
+            skeleton.MoveRandomly(grid);
+            boss.MoveRandomly(grid);
 
-            if (keyboardState.IsKeyDown(Keys.K) && canMove)
+            if (keyboardState.IsKeyDown(Keys.K) && hero.CanMove)
             {
                 grid.GenerateWalls();
-                Timer(0.2f);
+                Timer(0.2f, hero);
             }
-            
-            _spriteBatch.End();
+
+
+            if (hero.IsDead())
+            {
+                SetGameState(GameState.MainMenu);
+            }
+            if (ghost.IsDead())
+            {
+                
+            }
+
+
+
+
+
+                _spriteBatch.End();
             base.Update(gameTime);
         }
 
@@ -154,30 +194,41 @@ namespace Wanderer
 
                 DrawTexture(hero);                                          //Kirajzoljuk a Herot és a statját
                 DrawTexture(ghost);                                         //Kirajzoljuk a Ghostot és a statját
+                DrawTexture(ghost2);
+                DrawTexture(skeleton);
+                DrawTexture(boss);
 
-                if (hero.IsDead())
-                {
-                    // Ha a hős meghalt, állítsuk vissza a játékállapotot a főmenüre
-                    SetGameState(GameState.MainMenu);
-                }
-                if (ghost.IsDead())
-                {
-                    
-                }
                 // Végződj a rajzolással itt
                 _spriteBatch.End();                                 
             }
             base.Draw(gameTime);
         }
-        public void Timer(float moveDelay)
+        public void Timer(float moveDelay, Character character)
         {
-            canMove = false;
-            canFight = false;
-            // Indítsd el az időzítőt, ami után újra mozgás lesz engedélyezve
-            System.Timers.Timer timer = new System.Timers.Timer(moveDelay * 1000); // Átváltás másodpercről milliszekundumra
-            timer.Elapsed += (sender, e) => canMove = true;
-            timer.AutoReset = false; // Csak egyszer fut le
-            timer.Start();
+            if (character.CanMove)
+            {
+                character.CanMove = false;
+                // Indítsd el az időzítőt, ami után újra mozgás lesz engedélyezve
+                System.Timers.Timer timer = new System.Timers.Timer(moveDelay * 1000); // Átváltás másodpercről milliszekundumra
+                timer.Elapsed += (sender, e) =>
+                {
+                    character.CanMove = true;
+                };
+                timer.AutoReset = false; // Csak egyszer fut le
+                timer.Start();
+            }
+            if (character.CanFight)
+            {
+                character.CanFight = false;
+                // Indítsd el az időzítőt, ami után újra mozgás lesz engedélyezve
+                System.Timers.Timer timer = new System.Timers.Timer(moveDelay * 1000); // Átváltás másodpercről milliszekundumra
+                timer.Elapsed += (sender, e) =>
+                {
+                    character.CanFight = true;
+                };
+                timer.AutoReset = false; // Csak egyszer fut le
+                timer.Start();
+            }
 
         }
         public void DrawTexture(Character character)
@@ -233,6 +284,20 @@ namespace Wanderer
             ghostTexture.right = Content.Load<Texture2D>("ghost-right");
             ghost.Textures = ghostTexture;
 
+            ghost2Texture = new CharacterTextures();
+            ghost2Texture.down = Content.Load<Texture2D>("ghost2-down");
+            ghost2Texture.up = Content.Load<Texture2D>("ghost2-up");
+            ghost2Texture.left = Content.Load<Texture2D>("ghost2-left");
+            ghost2Texture.right = Content.Load<Texture2D>("ghost2-right");
+            ghost2.Textures = ghost2Texture;
+
+            skeletonTexture = new CharacterTextures();
+            skeletonTexture.down = Content.Load<Texture2D>("skeleton-down");
+            skeletonTexture.up = Content.Load<Texture2D>("skeleton-up");
+            skeletonTexture.left = Content.Load<Texture2D>("skeleton-left");
+            skeletonTexture.right = Content.Load<Texture2D>("skeleton-right");
+            skeleton.Textures = skeletonTexture;
+
             bossTexture = new CharacterTextures();
             bossTexture.down = Content.Load<Texture2D>("boss-down");
             bossTexture.up = Content.Load<Texture2D>("boss-up");
@@ -274,8 +339,17 @@ namespace Wanderer
             }
             if (character==ghost)
             {
-                _spriteBatch.DrawString(textTexture, characterStats, new Vector2(10, 100), Color.Black);
+                _spriteBatch.DrawString(textTexture, characterStats, new Vector2(10, 110), Color.Black);
             }
+            if (character == ghost2)
+            {
+                _spriteBatch.DrawString(textTexture, characterStats, new Vector2(10, 210), Color.Black);
+            }
+            if (character == skeleton)
+            {
+                _spriteBatch.DrawString(textTexture, characterStats, new Vector2(10, 310), Color.Black);
+            }
+
             //_spriteBatch.DrawString(textTexture, characterStats, new Vector2(10,10), Color.Black);
         }
         public void WindowSize(GraphicsDeviceManager _graphics)

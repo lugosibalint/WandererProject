@@ -4,38 +4,38 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/alien-down.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/alien-left.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/alien-right.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/alien-up.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/boss-down.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/boss-left.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/boss-right.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/boss-up.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/fogoni-down.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/fogoni-left.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/fogoni-right.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/fogoni-up.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/ghost-down.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/ghost-left.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/ghost-right.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/ghost-up.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/ghost2-down.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/ghost2-left.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/ghost2-right.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/ghost2-up.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/hero-down.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/hero-left.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/hero-right.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/hero-up.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/skeleton-down.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/skeleton-left.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/skeleton-right.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/skeleton-up.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/gameitems/coconout.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/gameitems/floor.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/gameitems/font.spritefont</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/gameitems/wall.png</File>
+    <File>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/characters/alien-down.png</File>
+    <File>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/characters/alien-left.png</File>
+    <File>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/characters/alien-right.png</File>
+    <File>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/characters/alien-up.png</File>
+    <File>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/characters/boss-down.png</File>
+    <File>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/characters/boss-left.png</File>
+    <File>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/characters/boss-right.png</File>
+    <File>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/characters/boss-up.png</File>
+    <File>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/characters/fogoni-down.png</File>
+    <File>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/characters/fogoni-left.png</File>
+    <File>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/characters/fogoni-right.png</File>
+    <File>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/characters/fogoni-up.png</File>
+    <File>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/characters/ghost-down.png</File>
+    <File>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/characters/ghost-left.png</File>
+    <File>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/characters/ghost-right.png</File>
+    <File>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/characters/ghost-up.png</File>
+    <File>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/characters/ghost2-down.png</File>
+    <File>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/characters/ghost2-left.png</File>
+    <File>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/characters/ghost2-right.png</File>
+    <File>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/characters/ghost2-up.png</File>
+    <File>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/characters/hero-down.png</File>
+    <File>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/characters/hero-left.png</File>
+    <File>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/characters/hero-right.png</File>
+    <File>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/characters/hero-up.png</File>
+    <File>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/characters/skeleton-down.png</File>
+    <File>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/characters/skeleton-left.png</File>
+    <File>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/characters/skeleton-right.png</File>
+    <File>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/characters/skeleton-up.png</File>
+    <File>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/gameitems/coconout.png</File>
+    <File>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/gameitems/floor.png</File>
+    <File>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/gameitems/font.spritefont</File>
+    <File>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/gameitems/wall.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

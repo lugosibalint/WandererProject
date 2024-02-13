@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tanulo\\Desktop\\Lugosi Bálint\\Wanderer\\WandererProject\\Wanderer\\Wanderer.csproj": {}
+    "C:\\Users\\lugib\\Documents\\GitHub\\WandererProject\\Wanderer\\Wanderer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tanulo\\Desktop\\Lugosi Bálint\\Wanderer\\WandererProject\\Wanderer\\Wanderer.csproj": {
+    "C:\\Users\\lugib\\Documents\\GitHub\\WandererProject\\Wanderer\\Wanderer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tanulo\\Desktop\\Lugosi Bálint\\Wanderer\\WandererProject\\Wanderer\\Wanderer.csproj",
+        "projectUniqueName": "C:\\Users\\lugib\\Documents\\GitHub\\WandererProject\\Wanderer\\Wanderer.csproj",
         "projectName": "Wanderer",
-        "projectPath": "C:\\Users\\tanulo\\Desktop\\Lugosi Bálint\\Wanderer\\WandererProject\\Wanderer\\Wanderer.csproj",
-        "packagesPath": "C:\\Users\\tanulo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tanulo\\Desktop\\Lugosi Bálint\\Wanderer\\WandererProject\\Wanderer\\obj\\",
+        "projectPath": "C:\\Users\\lugib\\Documents\\GitHub\\WandererProject\\Wanderer\\Wanderer.csproj",
+        "packagesPath": "C:\\Users\\lugib\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\lugib\\Documents\\GitHub\\WandererProject\\Wanderer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\tanulo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\lugib\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

@@ -19,13 +19,16 @@ namespace Wanderer
         public Vector2 Position { get; set; }
         public Texture2D Texture { get; set; }
         public CharacterTextures Textures { get; set; }
+        public bool CanMove { get; set; }
+        public bool CanFight { get; set; }
 
         public Character(int level)
         {
             this.Level = level;
             this.Position = new Vector2();
             this.Texture = Textures.down;
-            
+            this.CanMove = true;
+            this.CanFight = true;
             InitializeStats();
         }
 
@@ -39,6 +42,10 @@ namespace Wanderer
         }
         public void Fight(Character opponent)
         {
+            if (this.GetType() == opponent.GetType())
+            {
+                return;
+            }
             // Támadásnál a támadó értéke (SV) az SP és a d6 kétszeresének összege
             int attackValue = this.SP + DiceRoll(6) + DiceRoll(6);
 
@@ -53,12 +60,6 @@ namespace Wanderer
                 if (opponent.HP < 0)
                 {
                     opponent.HP = 0;
-                }
-
-                // Ha nem halt meg a hős, akkor szintet lép
-                if (!this.IsDead())
-                {
-                    this.LevelUp();
                 }
             }
         }

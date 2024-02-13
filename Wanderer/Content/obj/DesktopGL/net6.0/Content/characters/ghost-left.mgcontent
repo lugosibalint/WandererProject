@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/ghost-left.png</SourceFile>
-  <SourceTime>2024-02-13T08:09:04.623863+01:00</SourceTime>
-  <DestFile>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/bin/DesktopGL/Content/characters/ghost-left.xnb</DestFile>
-  <DestTime>2024-02-13T08:09:50.4379678+01:00</DestTime>
+  <SourceFile>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/characters/ghost-left.png</SourceFile>
+  <SourceTime>2024-02-13T12:38:54.6159053+01:00</SourceTime>
+  <DestFile>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/bin/DesktopGL/Content/characters/ghost-left.xnb</DestFile>
+  <DestTime>2024-02-13T12:41:22.8710672+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
