@@ -21,6 +21,7 @@ namespace Wanderer
         public CharacterTextures Textures { get; set; }
         public bool CanMove { get; set; }
         public bool CanFight { get; set; }
+        public Vector2 StatPosition { get; set; }
 
         public Character(int level)
         {

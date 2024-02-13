@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lugib\\Documents\\GitHub\\WandererProject\\Wanderer\\Wanderer.csproj": {}
+    "F:\\FÁJLOK\\Dokumentumok\\Suli\\lionsdale\\c#\\Wanderer\\WandererProject\\Wanderer\\Wanderer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lugib\\Documents\\GitHub\\WandererProject\\Wanderer\\Wanderer.csproj": {
+    "F:\\FÁJLOK\\Dokumentumok\\Suli\\lionsdale\\c#\\Wanderer\\WandererProject\\Wanderer\\Wanderer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lugib\\Documents\\GitHub\\WandererProject\\Wanderer\\Wanderer.csproj",
+        "projectUniqueName": "F:\\FÁJLOK\\Dokumentumok\\Suli\\lionsdale\\c#\\Wanderer\\WandererProject\\Wanderer\\Wanderer.csproj",
         "projectName": "Wanderer",
-        "projectPath": "C:\\Users\\lugib\\Documents\\GitHub\\WandererProject\\Wanderer\\Wanderer.csproj",
+        "projectPath": "F:\\FÁJLOK\\Dokumentumok\\Suli\\lionsdale\\c#\\Wanderer\\WandererProject\\Wanderer\\Wanderer.csproj",
         "packagesPath": "C:\\Users\\lugib\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lugib\\Documents\\GitHub\\WandererProject\\Wanderer\\obj\\",
+        "outputPath": "F:\\FÁJLOK\\Dokumentumok\\Suli\\lionsdale\\c#\\Wanderer\\WandererProject\\Wanderer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

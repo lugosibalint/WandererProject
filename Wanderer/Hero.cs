@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Wanderer
@@ -14,6 +15,7 @@ namespace Wanderer
         {
             MaxHP = 20 + 5 * DiceRoll(6);
             HP = MaxHP;
+            StatPosition = new Vector2(1500, 10);
             InitializeStats();
         }
     }

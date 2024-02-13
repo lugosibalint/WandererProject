@@ -19,6 +19,7 @@ namespace Wanderer
             Steps = 0;
             LastStep = 0;
             StepsPerMove = 2;
+            StatPosition = new Vector2(10, 10);
             InitializeStats();
         }
         public void MoveRandomly(Grid grid)

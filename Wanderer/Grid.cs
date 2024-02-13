@@ -83,7 +83,7 @@ namespace Wanderer
             } while (IsWall(randomPosition));
             return randomPosition;
         }
-        public CharacterTextures PickHeroTexture(ContentManager Content)
+        public CharacterTextures LoadHeroTextures(ContentManager Content)
         {
             Content.RootDirectory = "Content/characters";
             CharacterTextures heroTextures = new CharacterTextures();
@@ -93,18 +93,18 @@ namespace Wanderer
             heroTextures.right = Content.Load<Texture2D>("hero-right");
             return heroTextures;
         }
-        public CharacterTextures PickRandomTexture(ContentManager Content)
+        public CharacterTextures LoadMonsterTextures(ContentManager Content)
         {
             Content.RootDirectory = "Content/characters";
             string[] txt = File.ReadAllLines("texturelist.txt");
             string pickedLine = txt[Rnd.Next(1, txt.Length)];
-            CharacterTextures characterTextures = new CharacterTextures();
+            CharacterTextures monsterTextures = new CharacterTextures();
             string[] splitted = pickedLine.Split(' ');
-            characterTextures.down = Content.Load<Texture2D>(splitted[0]);
-            characterTextures.up = Content.Load<Texture2D>(splitted[0]);
-            characterTextures.left = Content.Load<Texture2D>(splitted[0]);
-            characterTextures.right = Content.Load<Texture2D>(splitted[0]);
-            return characterTextures;
+            monsterTextures.down = Content.Load<Texture2D>(splitted[0]);
+            monsterTextures.up = Content.Load<Texture2D>(splitted[0]);
+            monsterTextures.left = Content.Load<Texture2D>(splitted[0]);
+            monsterTextures.right = Content.Load<Texture2D>(splitted[0]);
+            return monsterTextures;
         }
     }
 }

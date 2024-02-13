@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/characters/boss-left.png</SourceFile>
-  <SourceTime>2024-02-13T13:36:02.8077771+01:00</SourceTime>
-  <DestFile>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/bin/DesktopGL/Content/characters/boss-left.xnb</DestFile>
-  <DestTime>2024-02-13T13:36:54.2137435+01:00</DestTime>
+  <SourceFile>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/characters/boss-left.png</SourceFile>
+  <SourceTime>2024-02-13T18:09:26.2875134+01:00</SourceTime>
+  <DestFile>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/bin/DesktopGL/Content/characters/boss-left.xnb</DestFile>
+  <DestTime>2024-02-13T18:10:10.6022982+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
