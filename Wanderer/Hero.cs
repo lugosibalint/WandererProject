@@ -18,5 +18,6 @@ namespace Wanderer
             StatPosition = new Vector2(1500, 10);
             InitializeStats();
         }
+
     }
 }

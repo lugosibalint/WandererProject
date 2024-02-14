@@ -65,54 +65,7 @@ namespace Wanderer
                     opponent.IsDead = true;
                 }
             }
-        }
-        private bool NextLevel()
-        {
-            // Ellenőrizzük, hogy a kulcsot hordozó szörny és a boss már meg van-e ölve
-            bool keyMonsterDead = /* implementáció: ellenőrizd a kulcsot hordozó szörnyt */false;
-            bool bossDead = /* implementáció: ellenőrizd a bosst */false;
-
-            if (keyMonsterDead && bossDead)
-            {
-                // Következő pálya inicializálása
-                InitializeNextLevel();
-
-                // Gyógyulás esélyeinek ellenőrzése és végrehajtása
-                Random random = new Random();
-                int chance = random.Next(1, 101);
-
-                if (chance <= 10)
-                {
-                    // 10% esély az összes HP visszatöltésére
-                    this.HP = this.MaxHP;
-                }
-                else if (chance <= 50)
-                {
-                    // 40% esély a HP harmadának a visszatöltésére
-                    this.HP += this.MaxHP / 3;
-                    if (this.HP > this.MaxHP)
-                        this.HP = this.MaxHP;
-                }
-                else
-                {
-                    // 50% esély a HP 10%-nak a visszatöltésére
-                    this.HP += this.MaxHP / 10;
-                    if (this.HP > this.MaxHP)
-                        this.HP = this.MaxHP;
-                }
-
-                // Szintlépés
-                this.LevelUp();
-
-                return true; // Következő pályára lépés sikeres
-            }
-
-            return false; // Még nem ölték meg mindkét fontos szörnyet
-        }
-        private void InitializeNextLevel()
-        {
-            // Implementáld a következő pálya inicializálását
-            // Frissítsd a szörnyeket, a pályát, stb.
+        
         }
         public void LevelUp()
         {

@@ -21,8 +21,10 @@ namespace Wanderer
         //Karakterek
         List<Monster> monsters = new List<Monster>();
         private Hero hero = new Hero(1);
+        private Boss boss = new Boss(2);
         //Játékmenet
         Grid grid = new Grid(10);
+        private Vector2 statposition = new Vector2(10, 10);
 
         //Game állapota
         public GameState _currentGameState;
@@ -60,11 +62,7 @@ namespace Wanderer
             LoadTextures();
 
             //generate characters
-            GenerateCharacters(5);
-
-            //Starting positions
-
-            //Starting directions
+            GenerateCharacters(grid.Rnd.Next(1,4));
 
             // TODO: use this.Content to load your game content here
         }
@@ -105,6 +103,8 @@ namespace Wanderer
                 DrawTexture(hero);
                 //Kirajzoljuk a Szörnyeket és a statukat
 
+                ShowKey(hero.Position);
+
                 if (monsters.Count != 0)
                 {
                     for (int i = 0; i < monsters.Count; i++)
@@ -113,7 +113,6 @@ namespace Wanderer
                         {
                             if (monsters[i].hasKey)
                             {
-                                ShowKey(monsters[i].Position);
                             }
                             monsters.Remove(monsters[i]);
 
@@ -134,9 +133,63 @@ namespace Wanderer
             }
             base.Draw(gameTime);
         }
+
+        public void NextLevel()
+        {
+
+            // Következő pálya inicializálása
+            InitializeNextLevel();
+
+            // Gyógyulás esélyeinek ellenőrzése és végrehajtása
+            Random random = new Random();
+            int chance = random.Next(1, 10);
+
+            if (chance <= 1)
+            {
+                // 10% esély az összes HP visszatöltésére
+                hero.HP = hero.MaxHP;
+            }
+            else if (chance <= 4)
+            {
+                // 40% esély a HP harmadának a visszatöltésére
+                hero.HP += hero.MaxHP / 3;
+                if (hero.HP > hero.MaxHP)
+                    hero.HP = hero.MaxHP;
+            }
+            else
+            {
+                // 50% esély a HP 10%-nak a visszatöltésére
+                hero.HP += hero.MaxHP / 10;
+                if (hero.HP > hero.MaxHP)
+                    hero.HP = hero.MaxHP;
+            }
+        }
+
+        public void InitializeNextLevel()
+        {
+            hero.LevelUp();
+            monsters.Clear();
+            statposition = new Vector2(10, 10);
+            grid.GenerateWalls();
+            GenerateCharacters(grid.Rnd.Next(hero.Level, hero.Level + 2));
+        }
         public void ShowKey(Vector2 position)
         {
-            _spriteBatch.Draw(keyTexture, position, Color.White);
+            for (int i = 0; i < monsters.Count; i++)
+            {
+                if (monsters[i].IsDead)
+                {
+                    if (monsters[i].hasKey)
+                    {
+                        _spriteBatch.Draw(keyTexture, new Vector2(1500, 110), Color.White);
+                        NextLevel();
+                    }
+                    else
+                    {
+                        hero.LevelUp();
+                    }
+                }
+            }
         }
         public void FightKeys()
         {
@@ -208,7 +261,7 @@ namespace Wanderer
             //
             if (keyboardState.IsKeyDown(Keys.K) && hero.CanMove)
             {
-                grid.GenerateWalls();
+                NextLevel();
                 Timer(0.2f, hero);
             }
             //
@@ -317,6 +370,7 @@ namespace Wanderer
 
             grid.LoadHeroTextures(Content);
             grid.LoadMonsterTextures(Content);
+            grid.LoadBossTextures(Content);
 
             Content.RootDirectory = "Content/gameitems";
             textTexture = Content.Load<SpriteFont>("font");                     //Font
@@ -334,6 +388,19 @@ namespace Wanderer
             string characterStats = $" Level: {character.Level} \n HP: {character.HP} / {character.MaxHP} \n DP: {character.DP} \n SP: {character.SP}";
             _spriteBatch.DrawString(textTexture, characterStats, character.StatPosition, Color.Black);
         }
+        public void IncreaseStatposition(Vector2 StatPosition)
+        {
+            if (StatPosition.Y == 810)
+            {
+                statposition.Y = 10;
+                statposition.X += 150;
+            }
+            else
+            {
+                statposition.Y += 100;
+            }
+
+        }
         public void GenerateCharacters(int count)
         {
             //hero
@@ -341,8 +408,7 @@ namespace Wanderer
             hero.Textures = grid.LoadHeroTextures(Content);
             hero.Texture = hero.Textures.down;
             //monsters
-            Vector2 statposition = new Vector2(10, 10);
-            int keyIndex = grid.Rnd.Next(1, count);
+            int keyIndex = grid.Rnd.Next(0, count-1);
             for (int i = 0; i < count; i++)
             {
                 Monster monster = new Monster(1); // Adj megfelelő paramétereket
@@ -350,7 +416,7 @@ namespace Wanderer
                 monster.Textures = grid.LoadMonsterTextures(Content);
                 monster.Texture = monster.Textures.down;
                 monster.StatPosition = statposition;
-                statposition.Y += 100;
+                IncreaseStatposition(monster.StatPosition);
                 monster.hasKey = (i == keyIndex);
                 monsters.Add(monster);
             }

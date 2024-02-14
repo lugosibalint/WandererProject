@@ -83,6 +83,16 @@ namespace Wanderer
             } while (IsWall(randomPosition));
             return randomPosition;
         }
+        public CharacterTextures LoadBossTextures(ContentManager Content)
+        {
+            Content.RootDirectory = "Content/characters";
+            CharacterTextures bossTextures = new CharacterTextures();
+            bossTextures.down = Content.Load<Texture2D>("boss-down");
+            bossTextures.up = Content.Load<Texture2D>("boss-up");
+            bossTextures.left = Content.Load<Texture2D>("boss-left");
+            bossTextures.right = Content.Load<Texture2D>("boss-right");
+            return bossTextures;
+        }
         public CharacterTextures LoadHeroTextures(ContentManager Content)
         {
             Content.RootDirectory = "Content/characters";
