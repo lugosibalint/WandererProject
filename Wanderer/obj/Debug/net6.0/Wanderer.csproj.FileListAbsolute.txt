@@ -216,3 +216,4 @@ F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\
 F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Content\characters\skeleton-right.xnb
 F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Content\characters\skeleton-up.xnb
 F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Content\gameitems\coconout.xnb
+C:\Users\tanulo\Desktop\Lugosi Bálint\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Content\gameitems\key.xnb

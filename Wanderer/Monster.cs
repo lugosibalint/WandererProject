@@ -12,6 +12,7 @@ namespace Wanderer
         public int Steps { get; set; }
         public int LastStep { get; set; }
         public int StepsPerMove { get; set; }
+        public bool hasKey { get; set; }
         public Monster(int level) : base(level)
         {
             Level = level;

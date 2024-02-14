@@ -19,6 +19,7 @@ namespace Wanderer
         public Vector2 Position { get; set; }
         public Texture2D Texture { get; set; }
         public CharacterTextures Textures { get; set; }
+        public bool IsDead { get; set; }
         public bool CanMove { get; set; }
         public bool CanFight { get; set; }
         public Vector2 StatPosition { get; set; }
@@ -28,6 +29,7 @@ namespace Wanderer
             this.Level = level;
             this.Position = new Vector2();
             this.Texture = Textures.down;
+            this.IsDead = false;
             this.CanMove = true;
             this.CanFight = true;
             InitializeStats();
@@ -58,9 +60,9 @@ namespace Wanderer
                 opponent.HP -= damage;
 
                 // Ellenfél HP-ja nem lehet negatív
-                if (opponent.HP < 0)
+                if (opponent.HP <= 0)
                 {
-                    opponent.HP = 0;
+                    opponent.IsDead = true;
                 }
             }
         }
@@ -119,10 +121,6 @@ namespace Wanderer
             DP += DiceRoll(6);
             SP += DiceRoll(6);
             HP = MaxHP;
-        }
-        public bool IsDead()
-        {
-            return HP <= 0;
         }
         public void Move(string direction, Grid grid)
         {

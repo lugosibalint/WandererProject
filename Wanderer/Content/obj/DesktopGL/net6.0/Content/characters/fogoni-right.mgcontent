@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/characters/fogoni-right.png</SourceFile>
-  <SourceTime>2024-02-12T21:13:24.9767164+01:00</SourceTime>
-  <DestFile>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/bin/DesktopGL/Content/characters/fogoni-right.xnb</DestFile>
-  <DestTime>2024-02-13T17:10:36.8310081+01:00</DestTime>
+  <SourceFile>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/fogoni-right.png</SourceFile>
+  <SourceTime>2024-02-13T08:09:04.623863+01:00</SourceTime>
+  <DestFile>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/bin/DesktopGL/Content/characters/fogoni-right.xnb</DestFile>
+  <DestTime>2024-02-14T12:26:34.1903118+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

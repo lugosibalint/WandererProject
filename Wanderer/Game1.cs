@@ -17,26 +17,10 @@ namespace Wanderer
         private SpriteFont textTexture;
         private Texture2D wallTexture;//fal
         private Texture2D floorTexture;//talaj
-        /*
-        private CharacterTextures heroTexture;//hero
-        private CharacterTextures ghostTexture;//szellem
-        private CharacterTextures ghost2Texture;
-        private CharacterTextures skeletonTexture;
-        private CharacterTextures bossTexture;//boss
-        
-        private bool loaded;
-        */
-
+        private Texture2D keyTexture;//kulcs
         //Karakterek
         List<Monster> monsters = new List<Monster>();
         private Hero hero = new Hero(1);
-        /*
-        Monster ghost = new Monster(1);
-        Monster ghost2 = new Monster(1);
-        Monster skeleton = new Monster(1);
-        Monster boss = new Monster(1);
-        */
-
         //Játékmenet
         Grid grid = new Grid(10);
 
@@ -98,7 +82,7 @@ namespace Wanderer
                 monster.MoveRandomly(grid);
             }
 
-            if (hero.IsDead())
+            if (hero.IsDead)
             {
                 SetGameState(GameState.MainMenu);
             }
@@ -120,15 +104,39 @@ namespace Wanderer
                 //Kirajzoljuk a Herot és a statját
                 DrawTexture(hero);
                 //Kirajzoljuk a Szörnyeket és a statukat
-                foreach (var monster in monsters)
+
+                if (monsters.Count != 0)
                 {
-                    DrawTexture(monster);
+                    for (int i = 0; i < monsters.Count; i++)
+                    {
+                        if (monsters[i].IsDead)
+                        {
+                            if (monsters[i].hasKey)
+                            {
+                                ShowKey(monsters[i].Position);
+                            }
+                            monsters.Remove(monsters[i]);
+
+                        }
+                        else
+                        {
+                            DrawTexture(monsters[i]);
+                        }
+                    }
+                }
+                else
+                {
+                    
                 }
 
                 // Végződj a rajzolással itt
                 _spriteBatch.End();                                 
             }
             base.Draw(gameTime);
+        }
+        public void ShowKey(Vector2 position)
+        {
+            _spriteBatch.Draw(keyTexture, position, Color.White);
         }
         public void FightKeys()
         {
@@ -235,19 +243,18 @@ namespace Wanderer
         }
         public void DrawTexture(Character character)
         {
-            if (!character.IsDead())
-            {
-                if (character.Texture != null)
-                {
-                    _spriteBatch.Draw(character.Texture, character.Position, Color.White);
-                    DrawCharacterStats(character);
-                }
-                else
-                {
-                    LoadContent();
-                }
 
+            if (character.Texture != null)
+            {
+                _spriteBatch.Draw(character.Texture, character.Position, Color.White);
+                DrawCharacterStats(character);
             }
+            else
+            {
+                LoadContent();
+            }
+
+            
         }
         public void ChangeTexture(Texture2D charTexture, Character character)
         {
@@ -312,9 +319,10 @@ namespace Wanderer
             grid.LoadMonsterTextures(Content);
 
             Content.RootDirectory = "Content/gameitems";
+            textTexture = Content.Load<SpriteFont>("font");                     //Font
             wallTexture = Content.Load<Texture2D>("wall");                      //Wall
             floorTexture = Content.Load<Texture2D>("floor");                    //Floor
-            textTexture = Content.Load<SpriteFont>("font");                     //Font
+            keyTexture = Content.Load<Texture2D>("key");
 
         }
         public void SetGameState(GameState newState)
@@ -328,10 +336,13 @@ namespace Wanderer
         }
         public void GenerateCharacters(int count)
         {
+            //hero
             hero.Position = grid.GenerateRandomPosition();
             hero.Textures = grid.LoadHeroTextures(Content);
             hero.Texture = hero.Textures.down;
+            //monsters
             Vector2 statposition = new Vector2(10, 10);
+            int keyIndex = grid.Rnd.Next(1, count);
             for (int i = 0; i < count; i++)
             {
                 Monster monster = new Monster(1); // Adj megfelelő paramétereket
@@ -340,6 +351,7 @@ namespace Wanderer
                 monster.Texture = monster.Textures.down;
                 monster.StatPosition = statposition;
                 statposition.Y += 100;
+                monster.hasKey = (i == keyIndex);
                 monsters.Add(monster);
             }
         }
