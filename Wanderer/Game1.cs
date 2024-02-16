@@ -79,6 +79,7 @@ namespace Wanderer
             {
                 monster.MoveRandomly(grid);
             }
+            boss.MoveRandomly(grid);
 
             if (hero.IsDead)
             {
@@ -101,33 +102,22 @@ namespace Wanderer
 
                 //Kirajzoljuk a Herot és a statját
                 DrawTexture(hero);
+                //Kirajzoljuk a Bosst és a statját
+                DrawTexture(boss);
                 //Kirajzoljuk a Szörnyeket és a statukat
 
-                ShowKey(hero.Position);
+                ShowKey();
 
                 if (monsters.Count != 0)
                 {
                     for (int i = 0; i < monsters.Count; i++)
                     {
-                        if (monsters[i].IsDead)
-                        {
-                            if (monsters[i].hasKey)
-                            {
-                            }
-                            monsters.Remove(monsters[i]);
-
-                        }
-                        else
+                        if (!monsters[i].IsDead)
                         {
                             DrawTexture(monsters[i]);
                         }
                     }
                 }
-                else
-                {
-                    
-                }
-
                 // Végződj a rajzolással itt
                 _spriteBatch.End();                                 
             }
@@ -168,18 +158,20 @@ namespace Wanderer
         public void InitializeNextLevel()
         {
             hero.LevelUp();
+            boss.LevelUp();
             monsters.Clear();
             statposition = new Vector2(10, 10);
             grid.GenerateWalls();
             GenerateCharacters(grid.Rnd.Next(hero.Level, hero.Level + 2));
         }
-        public void ShowKey(Vector2 position)
+        public void ShowKey()
         {
             for (int i = 0; i < monsters.Count; i++)
             {
                 if (monsters[i].IsDead)
                 {
-                    if (monsters[i].hasKey)
+                    monsters.Remove(monsters[i]);
+                    if (monsters[i].hasKey && boss.IsDead)
                     {
                         _spriteBatch.Draw(keyTexture, new Vector2(1500, 110), Color.White);
                         NextLevel();
@@ -201,7 +193,7 @@ namespace Wanderer
                     if (keyboardState.IsKeyDown(Keys.Space) && hero.CanFight)
                     {
                         hero.Fight(monster);
-                        Timer(0.2f, hero);
+                        HeroTimer(0.2f);
                         monster.Steps++;
                     }
                     /*
@@ -211,6 +203,16 @@ namespace Wanderer
                         Timer(1.2f, monster);
                     }
                     */
+                }
+                
+            }
+            if (hero.Position == boss.Position)
+            {
+                if (keyboardState.IsKeyDown(Keys.Space)&&hero.CanFight)
+                {
+                    hero.Fight(boss);
+                    HeroTimer(0.2f);
+                    boss.Steps++;
                 }
             }
         }
@@ -222,7 +224,7 @@ namespace Wanderer
             {
                 hero.Move("right", grid);
                 ChangeTexture(hero.Textures.right, hero);
-                Timer(0.2f, hero);
+                HeroTimer(0.2f);
                 foreach (var item in monsters)
                 {
                     item.Steps++;
@@ -232,7 +234,7 @@ namespace Wanderer
             {
                 hero.Move("left", grid);
                 ChangeTexture(hero.Textures.left, hero);
-                Timer(0.2f, hero);
+                HeroTimer(0.2f);
                 foreach (var item in monsters)
                 {
                     item.Steps++;
@@ -242,7 +244,7 @@ namespace Wanderer
             {
                 hero.Move("up", grid);
                 ChangeTexture(hero.Textures.up, hero);
-                Timer(0.2f, hero);
+                HeroTimer(0.2f);
                 foreach (var item in monsters)
                 {
                     item.Steps++;
@@ -252,7 +254,7 @@ namespace Wanderer
             {
                 hero.Move("down", grid);
                 ChangeTexture(hero.Textures.down, hero);
-                Timer(0.2f, hero);
+                HeroTimer(0.2f);
                 foreach (var item in monsters)
                 {
                     item.Steps++;
@@ -262,32 +264,32 @@ namespace Wanderer
             if (keyboardState.IsKeyDown(Keys.K) && hero.CanMove)
             {
                 NextLevel();
-                Timer(0.2f, hero);
+                HeroTimer(0.2f);
             }
             //
         }
-        public void Timer(float moveDelay, Character character)
+        public void HeroTimer(float moveDelay)
         {
-            if (character.CanMove)
+            if (hero.CanMove)
             {
-                character.CanMove = false;
+                hero.CanMove = false;
                 // Indítsd el az időzítőt, ami után újra mozgás lesz engedélyezve
                 System.Timers.Timer timer = new System.Timers.Timer(moveDelay * 1000); // Átváltás másodpercről milliszekundumra
                 timer.Elapsed += (sender, e) =>
                 {
-                    character.CanMove = true;
+                    hero.CanMove = true;
                 };
                 timer.AutoReset = false; // Csak egyszer fut le
                 timer.Start();
             }
-            if (character.CanFight)
+            if (hero.CanFight)
             {
-                character.CanFight = false;
+                hero.CanFight = false;
                 // Indítsd el az időzítőt, ami után újra mozgás lesz engedélyezve
                 System.Timers.Timer timer = new System.Timers.Timer(moveDelay * 1000); // Átváltás másodpercről milliszekundumra
                 timer.Elapsed += (sender, e) =>
                 {
-                    character.CanFight = true;
+                    hero.CanFight = true;
                 };
                 timer.AutoReset = false; // Csak egyszer fut le
                 timer.Start();
@@ -407,6 +409,10 @@ namespace Wanderer
             hero.Position = grid.GenerateRandomPosition();
             hero.Textures = grid.LoadHeroTextures(Content);
             hero.Texture = hero.Textures.down;
+            //boss
+            boss.Position = grid.GenerateRandomPosition();
+            boss.Textures = grid.LoadBossTextures(Content);
+            boss.Texture = boss.Textures.down;
             //monsters
             int keyIndex = grid.Rnd.Next(0, count-1);
             for (int i = 0; i < count; i++)

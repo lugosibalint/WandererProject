@@ -20,8 +20,6 @@ namespace Wanderer
         public Texture2D Texture { get; set; }
         public CharacterTextures Textures { get; set; }
         public bool IsDead { get; set; }
-        public bool CanMove { get; set; }
-        public bool CanFight { get; set; }
         public Vector2 StatPosition { get; set; }
 
         public Character(int level)
@@ -30,8 +28,6 @@ namespace Wanderer
             this.Position = new Vector2();
             this.Texture = Textures.down;
             this.IsDead = false;
-            this.CanMove = true;
-            this.CanFight = true;
             InitializeStats();
         }
 

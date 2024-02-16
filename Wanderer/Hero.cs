@@ -11,11 +11,15 @@ namespace Wanderer
 {
     internal class Hero : Character
     {
+        public bool CanMove { get; set; }
+        public bool CanFight { get; set; }
         public Hero(int level) : base(level)
         {
             MaxHP = 20 + 5 * DiceRoll(6);
             HP = MaxHP;
             StatPosition = new Vector2(1500, 10);
+            this.CanMove = true;
+            this.CanFight = true;
             InitializeStats();
         }
 

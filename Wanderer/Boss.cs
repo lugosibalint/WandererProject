@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ namespace Wanderer
         public Boss(int level) : base(level)
         {
             this.Level = level;
+            StatPosition = new Vector2(1500, 810);
         }
     }
 }

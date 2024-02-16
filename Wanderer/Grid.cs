@@ -68,12 +68,6 @@ namespace Wanderer
                 return false;
             }
         }
-        /*
-        public Texture2D GenerateRandomDirection()
-        {
-            return randomTexture;
-        }
-        */
         public Vector2 GenerateRandomPosition()
         {
             Vector2 randomPosition = new Vector2();
