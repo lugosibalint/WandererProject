@@ -25,13 +25,12 @@ namespace Wanderer
         }
         public void MoveRandomly(Grid grid)
         {
-            if (Steps % StepsPerMove == 0)
+            if (this.Steps % this.StepsPerMove == 0)
             {
-                while (Steps != LastStep)
+                while (this.Steps != this.LastStep)
                 {
-                    LastStep = Steps;
-                    Random random = new Random();
-                    int randomDirection = random.Next(4); // 0: fel, 1: le, 2: balra, 3: jobbra
+                    this.LastStep = this.Steps;
+                    int randomDirection = grid.Rnd.Next(4); // 0: fel, 1: le, 2: balra, 3: jobbra
                     switch (randomDirection)
                     {
                         case 0:

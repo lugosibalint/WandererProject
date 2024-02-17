@@ -55,7 +55,7 @@ namespace Wanderer
                 int damage = attackValue - opponent.DP;
                 opponent.HP -= damage;
 
-                // Ellenfél HP-ja nem lehet negatív
+                // Ellenfél HP-ja 0 alatt van akkor meghalt
                 if (opponent.HP <= 0)
                 {
                     opponent.IsDead = true;

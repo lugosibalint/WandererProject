@@ -15,9 +15,6 @@ namespace Wanderer
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private SpriteFont textTexture;
-        private Texture2D wallTexture;//fal
-        private Texture2D floorTexture;//talaj
-        private Texture2D keyTexture;//kulcs
         //Karakterek
         List<Monster> monsters = new List<Monster>();
         private Hero hero = new Hero(1);
@@ -25,15 +22,12 @@ namespace Wanderer
         //Játékmenet
         Grid grid = new Grid(10);
         private Vector2 statposition = new Vector2(10, 10);
+        private GameState _gameState;
 
-        //Game állapota
-        public GameState _currentGameState;
-        public enum GameState
-        {
-            MainMenu,
-            Playing,
-            // etc...
-        }
+        //textúrák
+        private Texture2D wallTexture;//fal
+        private Texture2D floorTexture;//talaj
+        private Texture2D keyTexture;//kulcs
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -44,7 +38,6 @@ namespace Wanderer
 
         protected override void Initialize()
         {
-            SetGameState(GameState.Playing);
             base.Initialize();
         }
 
@@ -54,13 +47,10 @@ namespace Wanderer
 
             //Grid méret beállítás
             grid.CreateGrid();
-
             //Falak generálása
             grid.GenerateWalls();
-
             //Load textures
             LoadTextures();
-
             //generate characters
             GenerateCharacters(grid.Rnd.Next(1,4));
 
@@ -72,18 +62,15 @@ namespace Wanderer
             _spriteBatch.Begin();
             MovementKeys();
             FightKeys();
-            //Fights
-
-
             foreach (var monster in monsters)
             {
                 monster.MoveRandomly(grid);
+                boss.MoveRandomly(grid);
             }
-            boss.MoveRandomly(grid);
 
             if (hero.IsDead)
             {
-                SetGameState(GameState.MainMenu);
+                ChangeState();
             }
 
             _spriteBatch.End();
@@ -93,37 +80,43 @@ namespace Wanderer
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.DarkGray);                   //Háttérszín: Szürke
-            if (true)
+
+
+            // Kezdd el a rajzolást itt
+            _spriteBatch.Begin();
+
+            DrawBackground();                                           //Kirajzoljuk a gridet
+
+            //Kirajzoljuk a Herot és a statját
+            DrawTexture(hero);
+            //Kirajzoljuk a Szörnyeket és a statukat
+
+            ShowKey();
+
+            if (monsters.Count != 0)
             {
-                // Kezdd el a rajzolást itt
-                _spriteBatch.Begin();                               
-
-                DrawBackground();                                           //Kirajzoljuk a gridet
-
-                //Kirajzoljuk a Herot és a statját
-                DrawTexture(hero);
-                //Kirajzoljuk a Bosst és a statját
-                DrawTexture(boss);
-                //Kirajzoljuk a Szörnyeket és a statukat
-
-                ShowKey();
-
-                if (monsters.Count != 0)
+                for (int i = 0; i < monsters.Count; i++)
                 {
-                    for (int i = 0; i < monsters.Count; i++)
+                    if (!monsters[i].IsDead)
                     {
-                        if (!monsters[i].IsDead)
-                        {
-                            DrawTexture(monsters[i]);
-                        }
+                        DrawTexture(monsters[i]);
                     }
                 }
-                // Végződj a rajzolással itt
-                _spriteBatch.End();                                 
             }
-            base.Draw(gameTime);
-        }
+            if (!boss.IsDead)
+            {
+                //Kirajzoljuk a Bosst és a statját
+                DrawTexture(boss);
+            }
+            // Végződj a rajzolással itt
+            _spriteBatch.End();                       
+            
 
+        }
+        private void ChangeState()
+        {
+            _gameState = GameState.Menu;
+        }
         public void NextLevel()
         {
 
@@ -154,11 +147,12 @@ namespace Wanderer
                     hero.HP = hero.MaxHP;
             }
         }
-
         public void InitializeNextLevel()
         {
             hero.LevelUp();
             boss.LevelUp();
+            boss.HP = boss.MaxHP;
+            boss.IsDead = false;
             monsters.Clear();
             statposition = new Vector2(10, 10);
             grid.GenerateWalls();
@@ -166,19 +160,40 @@ namespace Wanderer
         }
         public void ShowKey()
         {
+            /*
+            if (boss.IsDead)
+            {
+                for (int i = 0; i < monsters.Count; i++)
+                {
+                    if (monsters[i].IsDead)
+                    {
+                        if (monsters[i].hasKey)
+                        {
+                            _spriteBatch.Draw(keyTexture, new Vector2(1500, 110), Color.White);
+                            NextLevel();
+                        }
+                        hero.LevelUp();
+                        monsters.Remove(monsters[i]);
+                    }
+                }
+            }
+            */
             for (int i = 0; i < monsters.Count; i++)
             {
                 if (monsters[i].IsDead)
                 {
-                    monsters.Remove(monsters[i]);
-                    if (monsters[i].hasKey && boss.IsDead)
+                    if (monsters[i].hasKey)
                     {
-                        _spriteBatch.Draw(keyTexture, new Vector2(1500, 110), Color.White);
-                        NextLevel();
+                        if (boss.IsDead)
+                        {
+                            _spriteBatch.Draw(keyTexture, new Vector2(1500, 110), Color.White);
+                            NextLevel();
+                        }
                     }
                     else
                     {
                         hero.LevelUp();
+                        monsters.Remove(monsters[i]);
                     }
                 }
             }
@@ -193,6 +208,7 @@ namespace Wanderer
                     if (keyboardState.IsKeyDown(Keys.Space) && hero.CanFight)
                     {
                         hero.Fight(monster);
+                        monster.Fight(hero);
                         HeroTimer(0.2f);
                         monster.Steps++;
                     }
@@ -211,6 +227,7 @@ namespace Wanderer
                 if (keyboardState.IsKeyDown(Keys.Space)&&hero.CanFight)
                 {
                     hero.Fight(boss);
+                    boss.Fight(hero);
                     HeroTimer(0.2f);
                     boss.Steps++;
                 }
@@ -259,6 +276,11 @@ namespace Wanderer
                 {
                     item.Steps++;
                 }
+            }
+            if (keyboardState.IsKeyDown(Keys.Escape))
+            {
+                using var menu = new Menu();
+                menu.Run();
             }
             //
             if (keyboardState.IsKeyDown(Keys.K) && hero.CanMove)
@@ -381,10 +403,6 @@ namespace Wanderer
             keyTexture = Content.Load<Texture2D>("key");
 
         }
-        public void SetGameState(GameState newState)
-        {
-            _currentGameState = newState;
-        }
         public void DrawCharacterStats(Character character)
         {
             string characterStats = $" Level: {character.Level} \n HP: {character.HP} / {character.MaxHP} \n DP: {character.DP} \n SP: {character.SP}";
@@ -426,6 +444,7 @@ namespace Wanderer
                 monster.hasKey = (i == keyIndex);
                 monsters.Add(monster);
             }
+            monsters.Add(boss);
         }
         public void WindowSize(GraphicsDeviceManager _graphics)
         {

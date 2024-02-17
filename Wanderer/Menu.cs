@@ -10,24 +10,37 @@ using static Wanderer.Game1;
 
 namespace Wanderer
 {
-    public class MainMenu
+    public class Menu : Game
     {
+        private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private SpriteFont _font;
         private Game1 _game;
 
-        public MainMenu(SpriteBatch spriteBatch, SpriteFont font, Game1 game)
+        private GameState _gameState;
+        public Menu()
         {
-            _spriteBatch = spriteBatch;
-            _font = font;
-            _game = game;
+            _graphics = new GraphicsDeviceManager(this);
+            Content.RootDirectory = "Content/gameitems";
+            IsMouseVisible = true;
+            _graphics.PreferredBackBufferWidth = 800;
+            _graphics.PreferredBackBufferHeight = 600;
         }
 
-        public void Update(GameTime gameTime)
+        protected override void Initialize()
+        {
+            base.Initialize();
+        }
+        protected override void LoadContent()
+        {
+            _spriteBatch = new SpriteBatch(GraphicsDevice);
+            _font = Content.Load<SpriteFont>("font");                     //Font
+            _game = new Game1();
+        }
+        protected override void Update(GameTime gameTime)
         {
             // Ellenőrizzük a billentyűzet állapotát, és kezeljük a választásokat
 
-            /*
             KeyboardState keyboardState = Keyboard.GetState();
 
             if (keyboardState.IsKeyDown(Keys.Enter))
@@ -35,22 +48,24 @@ namespace Wanderer
                 // Játék indítása
                 StartGame();
             }
-            else if (keyboardState.IsKeyDown(Keys.Escape))
+            if (keyboardState.IsKeyDown(Keys.Escape))
             {
                 // Kilépés a játékból
                 ExitGame();
             }
 
-            */
+            base.Update(gameTime);
+
         }
 
-        public void Draw()
+        protected override void Draw(GameTime gameTime)
         {
+            GraphicsDevice.Clear(Color.Black);                   //Háttérszín: Fekete
             _spriteBatch.Begin();
-
+            
             // Rajzold ki a főmenü szövegeket
-            string startText = "Nyomd meg az Enter-t a játék indításához";
-            string exitText = "Nyomd meg az Esc-et a kilépéshez";
+            string startText = "Nyomd meg az Enter-t a jatek inditasahoz";
+            string exitText = "Nyomd meg az Esc-et a kilepeshez";
 
             Vector2 startTextPosition = new Vector2(100, 100);
             Vector2 exitTextPosition = new Vector2(100, 150);
@@ -60,17 +75,23 @@ namespace Wanderer
 
             _spriteBatch.End();
         }
-
+        private void ChangeState()
+        {
+            Exit();
+            _game.Run();
+            _gameState = GameState.Game1;
+        }
         private void StartGame()
         {
             // Itt indíthatod el a játékot vagy átnavigálhatsz egy új játékállapotba
-            _game.SetGameState(GameState.Playing); // Hívjuk meg a játék állapotát beállító metódust
+            ChangeState();
         }
 
         private void ExitGame()
         {
             // Itt kezelheted a kilépést a játékból
             // Példa: game.Exit();
+            Exit();
         }
     }
 }

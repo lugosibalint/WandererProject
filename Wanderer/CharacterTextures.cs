@@ -21,8 +21,5 @@ namespace Wanderer
             this.left = left;
             this.right = right;
         }
-        public void FileRead()
-        {
-        }
     }
 }

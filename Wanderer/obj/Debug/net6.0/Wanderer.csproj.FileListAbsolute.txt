@@ -218,3 +218,4 @@ F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\
 F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Content\gameitems\coconout.xnb
 C:\Users\tanulo\Desktop\Lugosi Bálint\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Content\gameitems\key.xnb
 C:\Users\lugib\Documents\GitHub\WandererProject\Wanderer\bin\Debug\net6.0\Content\gameitems\key.xnb
+F:\FÁJLOK\Dokumentumok\Suli\lionsdale\c#\Wanderer\WandererProject\Wanderer\bin\Debug\net6.0\Content\gameitems\key.xnb

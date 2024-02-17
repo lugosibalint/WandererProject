@@ -13,6 +13,9 @@ namespace Wanderer
         {
             this.Level = level;
             StatPosition = new Vector2(1500, 810);
+            Steps = 0;
+            LastStep = 0;
+            StepsPerMove = 1;
         }
     }
 }
