@@ -4,41 +4,73 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/alien-down.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/alien-left.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/alien-right.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/alien-up.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/boss-down.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/boss-left.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/boss-right.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/boss-up.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/fogoni-down.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/fogoni-left.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/fogoni-right.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/fogoni-up.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/ghost-down.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/ghost-left.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/ghost-right.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/ghost-up.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/ghost2-down.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/ghost2-left.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/ghost2-right.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/ghost2-up.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/hero-down.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/hero-left.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/hero-right.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/hero-up.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/skeleton-down.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/skeleton-left.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/skeleton-right.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/characters/skeleton-up.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/gameitems/coconout.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/gameitems/floor.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/gameitems/font.spritefont</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/gameitems/key.png</File>
-    <File>C:/Users/tanulo/Desktop/Lugosi Bálint/Wanderer/WandererProject/Wanderer/Content/gameitems/wall.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/characters/hero/hero-down.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/characters/hero/hero-left.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/characters/hero/hero-right.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/characters/hero/hero-up.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/characters/monsters/alien/alien-down.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/characters/monsters/alien/alien-left.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/characters/monsters/alien/alien-right.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/characters/monsters/alien/alien-up.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/characters/monsters/boss/boss-down.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/characters/monsters/boss/boss-left.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/characters/monsters/boss/boss-right.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/characters/monsters/boss/boss-up.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/characters/monsters/fogoni/fogoni-down.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/characters/monsters/fogoni/fogoni-left.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/characters/monsters/fogoni/fogoni-right.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/characters/monsters/fogoni/fogoni-up.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/characters/monsters/ghost/ghost-down.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/characters/monsters/ghost/ghost-left.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/characters/monsters/ghost/ghost-right.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/characters/monsters/ghost/ghost-up.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/characters/monsters/ghost2/ghost2-down.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/characters/monsters/ghost2/ghost2-left.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/characters/monsters/ghost2/ghost2-right.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/characters/monsters/ghost2/ghost2-up.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/characters/monsters/skeleton/skeleton-down.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/characters/monsters/skeleton/skeleton-left.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/characters/monsters/skeleton/skeleton-right.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/characters/monsters/skeleton/skeleton-up.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/gameitems/floor.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/gameitems/font.spritefont</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/gameitems/fruits/coconout/coconout-down.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/gameitems/fruits/coconout/coconout-left.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/gameitems/fruits/coconout/coconout-right.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/gameitems/fruits/coconout/coconout-up.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/gameitems/fruits/pear/pear-down.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/gameitems/fruits/pear/pear-left.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/gameitems/fruits/pear/pear-right.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/gameitems/fruits/pear/pear-up.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/gameitems/fruits/watermelon/watermelon-down.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/gameitems/fruits/watermelon/watermelon-left.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/gameitems/fruits/watermelon/watermelon-right.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/gameitems/fruits/watermelon/watermelon-up.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/gameitems/key.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/gameitems/wall.png</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/sfx/eat.mp3</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/sfx/error.mp3</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/sfx/game_over.mp3</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/sfx/level_up.mp3</File>
+    <File>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/sfx/shoot.mp3</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

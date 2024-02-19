@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Graphics.PackedVector;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
@@ -16,13 +15,15 @@ namespace Wanderer
         private SpriteBatch _spriteBatch;
         private SpriteFont textTexture;
         //Karakterek
-        List<Monster> monsters = new List<Monster>();
+        private List<Fruit> fruits = new List<Fruit>();
+        private List<Monster> monsters = new List<Monster>();
         private Hero hero = new Hero(1);
         private Boss boss = new Boss(2);
         //Játékmenet
         Grid grid = new Grid(10);
         private Vector2 statposition = new Vector2(10, 10);
         private GameState _gameState;
+        private int currentLevel = 1;
 
         //textúrák
         private Texture2D wallTexture;//fal
@@ -85,7 +86,8 @@ namespace Wanderer
             // Kezdd el a rajzolást itt
             _spriteBatch.Begin();
 
-            DrawBackground();                                           //Kirajzoljuk a gridet
+            //Kirajzoljuk a gridet
+            DrawBackground();                                           
 
             //Kirajzoljuk a Herot és a statját
             DrawTexture(hero);
@@ -99,7 +101,23 @@ namespace Wanderer
                 {
                     if (!monsters[i].IsDead)
                     {
+                        //Kirajzoljukk a szörnyeket
                         DrawTexture(monsters[i]);
+                    }
+                }
+            }
+            if(fruits.Count != 0)
+            {
+                for (int i = 0; i < fruits.Count; i++)
+                {
+                    if (!fruits[i].IsDead)
+                    {
+                        //Kirajzoljuk a gyümölcsöket
+                        DrawTexture(fruits[i]);
+                    }
+                    else
+                    {
+                        fruits.Remove(fruits[i]);
                     }
                 }
             }
@@ -124,8 +142,7 @@ namespace Wanderer
             InitializeNextLevel();
 
             // Gyógyulás esélyeinek ellenőrzése és végrehajtása
-            Random random = new Random();
-            int chance = random.Next(1, 10);
+            int chance = grid.Rnd.Next(1, 10);
 
             if (chance <= 1)
             {
@@ -149,10 +166,12 @@ namespace Wanderer
         }
         public void InitializeNextLevel()
         {
+            currentLevel++;
             hero.LevelUp();
             boss.LevelUp();
             boss.HP = boss.MaxHP;
             boss.IsDead = false;
+            fruits.Clear();
             monsters.Clear();
             statposition = new Vector2(10, 10);
             grid.GenerateWalls();
@@ -201,6 +220,16 @@ namespace Wanderer
         public void FightKeys()
         {
             KeyboardState keyboardState = Keyboard.GetState();
+            if (hero.Position == boss.Position)
+            {
+                if (keyboardState.IsKeyDown(Keys.Space) && hero.CanFight)
+                {
+                    hero.Fight(boss);
+                    boss.Fight(hero);
+                    HeroTimer(0.2f);
+                    boss.Steps++;
+                }
+            }
             foreach (var monster in monsters)
             {
                 if (hero.Position == monster.Position)
@@ -220,16 +249,16 @@ namespace Wanderer
                     }
                     */
                 }
-                
             }
-            if (hero.Position == boss.Position)
+            foreach (var fruit in fruits)
             {
-                if (keyboardState.IsKeyDown(Keys.Space)&&hero.CanFight)
+                if (hero.Position == fruit.Position)
                 {
-                    hero.Fight(boss);
-                    boss.Fight(hero);
-                    HeroTimer(0.2f);
-                    boss.Steps++;
+                    if (keyboardState.IsKeyDown(Keys.Space) && hero.CanFight)
+                    {
+                        hero.Eat(fruit);
+                        HeroTimer(0.2f);
+                    }
                 }
             }
         }
@@ -279,8 +308,10 @@ namespace Wanderer
             }
             if (keyboardState.IsKeyDown(Keys.Escape))
             {
+                /*
                 using var menu = new Menu();
                 menu.Run();
+                */
             }
             //
             if (keyboardState.IsKeyDown(Keys.K) && hero.CanMove)
@@ -328,7 +359,7 @@ namespace Wanderer
             }
             else
             {
-                LoadContent();
+                LoadTextures();
             }
 
             
@@ -339,7 +370,7 @@ namespace Wanderer
         }
         public void DrawBackground()
         {
-            foreach (var item in grid.Content)
+            foreach (var item in grid.Cells)
             {
                 if (grid.IsWall(item))
                 {
@@ -391,22 +422,26 @@ namespace Wanderer
             bossTexture.left = Content.Load<Texture2D>("boss-left");
             bossTexture.right = Content.Load<Texture2D>("boss-right");
             */
-
+            /*
             grid.LoadHeroTextures(Content);
             grid.LoadMonsterTextures(Content);
             grid.LoadBossTextures(Content);
+            */
 
             Content.RootDirectory = "Content/gameitems";
             textTexture = Content.Load<SpriteFont>("font");                     //Font
             wallTexture = Content.Load<Texture2D>("wall");                      //Wall
             floorTexture = Content.Load<Texture2D>("floor");                    //Floor
-            keyTexture = Content.Load<Texture2D>("key");
+            keyTexture = Content.Load<Texture2D>("key");                        //Key
 
         }
         public void DrawCharacterStats(Character character)
         {
-            string characterStats = $" Level: {character.Level} \n HP: {character.HP} / {character.MaxHP} \n DP: {character.DP} \n SP: {character.SP}";
-            _spriteBatch.DrawString(textTexture, characterStats, character.StatPosition, Color.Black);
+            if (character.StatPosition != new Vector2(0,0))
+            {
+                string characterStats = $" Level: {character.Level} \n HP: {character.HP} / {character.MaxHP} \n DP: {character.DP} \n SP: {character.SP}";
+                _spriteBatch.DrawString(textTexture, characterStats, character.StatPosition, Color.Black);
+            }
         }
         public void IncreaseStatposition(Vector2 StatPosition)
         {
@@ -423,19 +458,21 @@ namespace Wanderer
         }
         public void GenerateCharacters(int count)
         {
-            //hero
-            hero.Position = grid.GenerateRandomPosition();
-            hero.Textures = grid.LoadHeroTextures(Content);
-            hero.Texture = hero.Textures.down;
-            //boss
-            boss.Position = grid.GenerateRandomPosition();
-            boss.Textures = grid.LoadBossTextures(Content);
-            boss.Texture = boss.Textures.down;
-            //monsters
-            int keyIndex = grid.Rnd.Next(0, count-1);
+            GenerateMonsters(count);
+            GenerateHero();
+            GenerateBoss();
+            GenerateFruits(count);
+        }
+        public void GenerateMonsters(int count)
+        {
+            int keyIndex = grid.Rnd.Next(0, count - 1);
             for (int i = 0; i < count; i++)
             {
                 Monster monster = new Monster(1); // Adj megfelelő paramétereket
+                for (int j = 0; j < currentLevel; j++)
+                {
+                    monster.LevelUp();
+                }
                 monster.Position = grid.GenerateRandomPosition();
                 monster.Textures = grid.LoadMonsterTextures(Content);
                 monster.Texture = monster.Textures.down;
@@ -444,7 +481,34 @@ namespace Wanderer
                 monster.hasKey = (i == keyIndex);
                 monsters.Add(monster);
             }
+        }
+        public void GenerateBoss()
+        {
+            boss.Position = grid.GenerateRandomPosition();
+            boss.Textures = grid.LoadBossTextures(Content);
+            boss.Texture = boss.Textures.down;
             monsters.Add(boss);
+        }
+        public void GenerateHero()
+        {
+            hero.Position = grid.GenerateRandomPosition();
+            hero.Textures = grid.LoadHeroTextures(Content);
+            hero.Texture = hero.Textures.down;
+        }
+        public void GenerateFruits( int count)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                Fruit fruit = new Fruit(1);
+                for (int j = 0; j < currentLevel; j++)
+                {
+                    fruit.LevelUp();
+                }
+                fruit.Position = grid.GenerateRandomPosition();
+                fruit.Textures = grid.LoadFruitTextures(Content);
+                fruit.Texture = fruit.Textures.down;
+                fruits.Add(fruit);
+            }
         }
         public void WindowSize(GraphicsDeviceManager _graphics)
         {

@@ -69,7 +69,6 @@ namespace Wanderer
             MaxHP += DiceRoll(6);
             DP += DiceRoll(6);
             SP += DiceRoll(6);
-            HP = MaxHP;
         }
         public void Move(string direction, Grid grid)
         {
@@ -78,7 +77,7 @@ namespace Wanderer
 
             Vector2 newPosition = this.Position;
 
-            if (direction == "right" && colIndex < grid.Content.GetLength(1) - 1)
+            if (direction == "right" && colIndex < grid.Cells.GetLength(1) - 1)
             {
                 this.Texture = this.Textures.right;
                 newPosition.X += 72;
@@ -88,7 +87,7 @@ namespace Wanderer
                 this.Texture = this.Textures.left;
                 newPosition.X -= 72;
             }
-            else if (direction == "down" && rowIndex < grid.Content.GetLength(0) - 1)
+            else if (direction == "down" && rowIndex < grid.Cells.GetLength(0) - 1)
             {
                 this.Texture = this.Textures.down;
                 newPosition.Y += 72;

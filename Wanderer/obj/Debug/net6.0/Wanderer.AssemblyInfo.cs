@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Wanderer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+866f3c6fb32f0a964e0231c9b1fffeb809c02b1c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a683190fa04f4480028107a022a7c941d4977317")]
 [assembly: System.Reflection.AssemblyProductAttribute("Wanderer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Wanderer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -22,6 +22,19 @@ namespace Wanderer
             this.CanFight = true;
             InitializeStats();
         }
-
+        public void Eat(Character opponent)
+        {
+            opponent.HP = 0;
+            opponent.IsDead = true;
+            int newHp = this.HP + 5 * DiceRoll(6);
+            if (newHp > this.MaxHP)
+            {
+                this.HP = this.MaxHP;
+            }
+            else
+            {
+                this.HP = newHp;
+            }
+        }
     }
 }

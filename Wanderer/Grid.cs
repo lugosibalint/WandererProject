@@ -5,26 +5,28 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Wanderer
 {
-    public class Grid
+    public class Grid : Game
     {
         public int Size { get; set; }
-        public Vector2[,] Content { get; set; }
+        public Vector2[,] Cells { get; set; }
         public Random Rnd { get; set; }
         public List<Vector2> Walls { get; set; }
 
         public Grid(int gridSize)
         {
+            Content.RootDirectory = "Content";
             this.Size = gridSize;
         }
         public void CreateGrid()
         {
-            Content = new Vector2[Size, Size];
+            Cells = new Vector2[Size, Size];
             for (int i = 0; i < Size; i++)
             {
                 for (int j = 0; j < Size; j++)
@@ -32,7 +34,7 @@ namespace Wanderer
                     Vector2 coords = new Vector2(); // Minden cellához új objektum
                     coords.X = 440 + j * 72;
                     coords.Y = 125 + i * 72;
-                    Content[i, j] = coords;
+                    Cells[i, j] = coords;
 
                 }
             }
@@ -50,7 +52,7 @@ namespace Wanderer
                     int rndnum = Rnd.Next(1, 10);
                     if (rndnum > 7)
                     {
-                        Vector2 wallPosition = Content[i, j];
+                        Vector2 wallPosition = Cells[i, j];
                         Walls.Add(wallPosition);
                     }
                 }
@@ -73,23 +75,13 @@ namespace Wanderer
             Vector2 randomPosition = new Vector2();
             do
             {
-                randomPosition = Content[Rnd.Next(0, Size - 1), Rnd.Next(0, Size - 1)];
+                randomPosition = Cells[Rnd.Next(0, Size - 1), Rnd.Next(0, Size - 1)];
             } while (IsWall(randomPosition));
             return randomPosition;
         }
-        public CharacterTextures LoadBossTextures(ContentManager Content)
-        {
-            Content.RootDirectory = "Content/characters";
-            CharacterTextures bossTextures = new CharacterTextures();
-            bossTextures.down = Content.Load<Texture2D>("boss-down");
-            bossTextures.up = Content.Load<Texture2D>("boss-up");
-            bossTextures.left = Content.Load<Texture2D>("boss-left");
-            bossTextures.right = Content.Load<Texture2D>("boss-right");
-            return bossTextures;
-        }
         public CharacterTextures LoadHeroTextures(ContentManager Content)
         {
-            Content.RootDirectory = "Content/characters";
+            Content.RootDirectory = "Content/characters/hero";
             CharacterTextures heroTextures = new CharacterTextures();
             heroTextures.down = Content.Load<Texture2D>("hero-down");
             heroTextures.up = Content.Load<Texture2D>("hero-up");
@@ -97,18 +89,39 @@ namespace Wanderer
             heroTextures.right = Content.Load<Texture2D>("hero-right");
             return heroTextures;
         }
+        public CharacterTextures LoadBossTextures(ContentManager Content)
+        {
+            Content.RootDirectory = "Content/characters/monsters/boss";
+            CharacterTextures bossTextures = new CharacterTextures();
+            bossTextures.down = Content.Load<Texture2D>("boss-down");
+            bossTextures.up = Content.Load<Texture2D>("boss-up");
+            bossTextures.left = Content.Load<Texture2D>("boss-left");
+            bossTextures.right = Content.Load<Texture2D>("boss-right");
+            return bossTextures;
+        }
         public CharacterTextures LoadMonsterTextures(ContentManager Content)
         {
-            Content.RootDirectory = "Content/characters";
             string[] txt = File.ReadAllLines("texturelist.txt");
             string pickedLine = txt[Rnd.Next(1, txt.Length)];
+            Content.RootDirectory = $"Content/characters/monsters/{pickedLine}";
             CharacterTextures monsterTextures = new CharacterTextures();
-            string[] splitted = pickedLine.Split(' ');
-            monsterTextures.down = Content.Load<Texture2D>(splitted[0]);
-            monsterTextures.up = Content.Load<Texture2D>(splitted[0]);
-            monsterTextures.left = Content.Load<Texture2D>(splitted[0]);
-            monsterTextures.right = Content.Load<Texture2D>(splitted[0]);
+            monsterTextures.down = Content.Load<Texture2D>(pickedLine + "-down");
+            monsterTextures.up = Content.Load<Texture2D>(pickedLine + "-up");
+            monsterTextures.left = Content.Load<Texture2D>(pickedLine + "-left");
+            monsterTextures.right = Content.Load<Texture2D>(pickedLine + "-right");
             return monsterTextures;
+        }
+        public CharacterTextures LoadFruitTextures(ContentManager Content)
+        {
+            string[] txt = File.ReadAllLines("fruitlist.txt");
+            string pickedLine = txt[Rnd.Next(1, txt.Length)];
+            Content.RootDirectory = $"Content/gameitems/fruits/{pickedLine}";
+            CharacterTextures fruitTextures = new CharacterTextures();
+            fruitTextures.down = Content.Load<Texture2D>(pickedLine + "-down");
+            fruitTextures.up = Content.Load<Texture2D>(pickedLine + "-up");
+            fruitTextures.left = Content.Load<Texture2D>(pickedLine + "-left");
+            fruitTextures.right = Content.Load<Texture2D>(pickedLine + "-right");
+            return fruitTextures;
         }
     }
 }
