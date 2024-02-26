@@ -23,11 +23,11 @@ namespace Wanderer
         private Hero hero = new Hero(1);
         private Boss boss = new Boss(1);
         //Játékmenet
-        Grid grid = new Grid(8);
+        Grid grid = new Grid(10);
         private Vector2 statposition = new Vector2(10, 10);
         private int currentLevel = 0;
 
-        //hangok
+        //Hangok
         private SoundEffect errorSound;
         private SoundEffect eatSound;
         private SoundEffect gameoverSound;
@@ -35,8 +35,7 @@ namespace Wanderer
         private SoundEffect shootSound;
         private Song themeSong;
 
-
-        //textúrák
+        //Textúrák
         private Texture2D wallTexture;//fal
         private Texture2D floorTexture;//talaj
         private Texture2D keyTexture;//kulcs
@@ -53,7 +52,6 @@ namespace Wanderer
         {
             base.Initialize();
         }
-
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -66,12 +64,13 @@ namespace Wanderer
             LoadTextures();
             //Load SFX
             LoadSFX();
+            //Play menu song
+            PlaySFX();
             //generate characters
             GenerateCharacters(grid.Rnd.Next(1,4));
 
             // TODO: use this.Content to load your game content here
         }
-
         protected override void Update(GameTime gameTime)
         {
             _spriteBatch.Begin();
@@ -87,7 +86,6 @@ namespace Wanderer
             _spriteBatch.End();
             base.Update(gameTime);
         }
-
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.DarkGray);                   //Háttérszín: Szürke
@@ -146,7 +144,7 @@ namespace Wanderer
             
 
         }
-        public void GameOver()
+        private void GameOver()
         {
             //szöveg méretének beállítása
             float scale = 1.5f;
@@ -169,9 +167,7 @@ namespace Wanderer
             grid.Walls.Clear();
 
         }
-
-
-        public void NextLevel()
+        private void NextLevel()
         {
 
             // Következő pálya inicializálása
@@ -200,7 +196,7 @@ namespace Wanderer
                     hero.HP = hero.MaxHP;
             }
         }
-        public void InitializeNextLevel()
+        private void InitializeNextLevel()
         {
             currentLevel++;
             hero.LevelUp();
@@ -214,26 +210,8 @@ namespace Wanderer
             grid.GenerateWalls();
             GenerateCharacters(grid.Rnd.Next(hero.Level, hero.Level + 2));
         }
-        public void ShowKey()
+        private void ShowKey()
         {
-            /*
-            if (boss.IsDead)
-            {
-                for (int i = 0; i < monsters.Count; i++)
-                {
-                    if (monsters[i].IsDead)
-                    {
-                        if (monsters[i].hasKey)
-                        {
-                            _spriteBatch.Draw(keyTexture, new Vector2(1500, 110), Color.White);
-                            NextLevel();
-                        }
-                        hero.LevelUp();
-                        monsters.Remove(monsters[i]);
-                    }
-                }
-            }
-            */
             for (int i = 0; i < monsters.Count; i++)
             {
                 if (monsters[i].IsDead)
@@ -255,7 +233,7 @@ namespace Wanderer
                 }
             }
         }
-        public void FightKeys()
+        private void FightKeys()
         {
             KeyboardState keyboardState = Keyboard.GetState();
             if (hero.Position == boss.Position)
@@ -296,7 +274,7 @@ namespace Wanderer
                 }
             }
         }
-        public void MovementKeys()
+        private void MovementKeys()
         {
             KeyboardState keyboardState = Keyboard.GetState();
 
@@ -356,7 +334,7 @@ namespace Wanderer
             }
             // ]]
         }
-        public void HeroTimer(float moveDelay)
+        private void HeroTimer(float moveDelay)
         {
             if (hero.CanMove)
             {
@@ -384,7 +362,7 @@ namespace Wanderer
             }
 
         }
-        public void DrawTexture(Character character)
+        private void DrawTexture(Character character)
         {
             if (!character.IsDead)
             {
@@ -400,27 +378,30 @@ namespace Wanderer
             }
 
         }
-        public void ChangeTexture(Texture2D charTexture, Character character)
+        private void ChangeTexture(Texture2D charTexture, Character character)
         {
             _spriteBatch.Draw(charTexture, character.Position, Color.White);
         }
-        public void DrawBackground()
+        private void DrawBackground()
         {
             foreach (var item in grid.Cells)
             {
                 if (grid.IsWall(item))
                 {
-
                     _spriteBatch.Draw(wallTexture, item, Color.White);
                 }
                 else
                 {
-
                     _spriteBatch.Draw(floorTexture, item, Color.White);
                 }
             }
         }
-        public void LoadSFX()
+        private void PlaySFX()
+        {
+            MediaPlayer.Play(themeSong);
+            MediaPlayer.Volume = 0.2f;
+        }
+        private void LoadSFX()
         {
             Content.RootDirectory = "Content/sfx";
             errorSound = Content.Load<SoundEffect>("error");
@@ -429,53 +410,9 @@ namespace Wanderer
             levelupSound = Content.Load<SoundEffect>("level_up");
             shootSound = Content.Load<SoundEffect>("shoot");
             themeSong = Content.Load<Song>("theme");
-            MediaPlayer.Play(themeSong);
-            MediaPlayer.Volume = 0.2f;
         }
-        public void LoadTextures()
+        private void LoadTextures()
         {
-            /*
-            Content.RootDirectory = "Content/characters";
-            heroTexture = new CharacterTextures();
-            heroTexture.down = Content.Load<Texture2D>("hero-down");
-            heroTexture.up = Content.Load<Texture2D>("hero-up");
-            heroTexture.left = Content.Load<Texture2D>("hero-left");
-            heroTexture.right = Content.Load<Texture2D>("hero-right");
-            hero.Textures = heroTexture;
-
-            ghostTexture = new CharacterTextures();
-            ghostTexture.down = Content.Load<Texture2D>("ghost-down");
-            ghostTexture.up = Content.Load<Texture2D>("ghost-up");
-            ghostTexture.left = Content.Load<Texture2D>("ghost-left");
-            ghostTexture.right = Content.Load<Texture2D>("ghost-right");
-            ghost.Textures = ghostTexture;
-
-            ghost2Texture = new CharacterTextures();
-            ghost2Texture.down = Content.Load<Texture2D>("ghost2-down");
-            ghost2Texture.up = Content.Load<Texture2D>("ghost2-up");
-            ghost2Texture.left = Content.Load<Texture2D>("ghost2-left");
-            ghost2Texture.right = Content.Load<Texture2D>("ghost2-right");
-            ghost2.Textures = ghost2Texture;
-
-            skeletonTexture = new CharacterTextures();
-            skeletonTexture.down = Content.Load<Texture2D>("skeleton-down");
-            skeletonTexture.up = Content.Load<Texture2D>("skeleton-up");
-            skeletonTexture.left = Content.Load<Texture2D>("skeleton-left");
-            skeletonTexture.right = Content.Load<Texture2D>("skeleton-right");
-            skeleton.Textures = skeletonTexture;
-
-            bossTexture = new CharacterTextures();
-            bossTexture.down = Content.Load<Texture2D>("boss-down");
-            bossTexture.up = Content.Load<Texture2D>("boss-up");
-            bossTexture.left = Content.Load<Texture2D>("boss-left");
-            bossTexture.right = Content.Load<Texture2D>("boss-right");
-
-
-            grid.LoadHeroTextures(Content);
-            grid.LoadMonsterTextures(Content);
-            grid.LoadBossTextures(Content);
-            */
-
             Content.RootDirectory = "Content/gameitems";
             textTexture = Content.Load<SpriteFont>("font");                     //Font
             wallTexture = Content.Load<Texture2D>("wall");                      //Wall
@@ -484,7 +421,7 @@ namespace Wanderer
             gameoverTexture = Content.Load<Texture2D>("gameover");              //Game Over
 
         }
-        public void DrawCharacterStats(Character character)
+        private void DrawCharacterStats(Character character)
         {
             if (character.StatPosition != new Vector2(0,0))
             {
@@ -492,7 +429,7 @@ namespace Wanderer
                 _spriteBatch.DrawString(textTexture, characterStats, character.StatPosition, Color.Black);
             }
         }
-        public void IncreaseStatposition(Vector2 StatPosition)
+        private void IncreaseStatposition(Vector2 StatPosition)
         {
             if (StatPosition.Y == 810)
             {
@@ -505,14 +442,14 @@ namespace Wanderer
             }
 
         }
-        public void GenerateCharacters(int count)
+        private void GenerateCharacters(int count)
         {
             GenerateMonsters(count);
             GenerateHero();
             GenerateBoss();
             GenerateFruits(count);
         }
-        public void GenerateMonsters(int count)
+        private void GenerateMonsters(int count)
         {
             int keyIndex = grid.Rnd.Next(0, count - 1);
             for (int i = 0; i < count; i++)
@@ -531,20 +468,20 @@ namespace Wanderer
                 monsters.Add(monster);
             }
         }
-        public void GenerateBoss()
+        private void GenerateBoss()
         {
             boss.Position = grid.GenerateRandomPosition();
             boss.Textures = grid.LoadBossTextures(Content);
             boss.Texture = boss.Textures.down;
             monsters.Add(boss);
         }
-        public void GenerateHero()
+        private void GenerateHero()
         {
             hero.Position = grid.GenerateRandomPosition();
             hero.Textures = grid.LoadHeroTextures(Content);
             hero.Texture = hero.Textures.down;
         }
-        public void GenerateFruits( int count)
+        private void GenerateFruits( int count)
         {
             for (int i = 0; i < count; i++)
             {
@@ -559,7 +496,7 @@ namespace Wanderer
                 fruits.Add(fruit);
             }
         }
-        public void WindowSize(GraphicsDeviceManager _graphics)
+        private void WindowSize(GraphicsDeviceManager _graphics)
         {
             // Ablak méretének beállítása
             _graphics.PreferredBackBufferWidth = 1600;
