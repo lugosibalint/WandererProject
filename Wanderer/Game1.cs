@@ -1,9 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Threading;
 
 namespace Wanderer
@@ -18,17 +21,26 @@ namespace Wanderer
         private List<Fruit> fruits = new List<Fruit>();
         private List<Monster> monsters = new List<Monster>();
         private Hero hero = new Hero(1);
-        private Boss boss = new Boss(2);
+        private Boss boss = new Boss(1);
         //Játékmenet
-        Grid grid = new Grid(10);
+        Grid grid = new Grid(8);
         private Vector2 statposition = new Vector2(10, 10);
-        private GameState _gameState;
-        private int currentLevel = 1;
+        private int currentLevel = 0;
+
+        //hangok
+        private SoundEffect errorSound;
+        private SoundEffect eatSound;
+        private SoundEffect gameoverSound;
+        private SoundEffect levelupSound;
+        private SoundEffect shootSound;
+        private Song themeSong;
+
 
         //textúrák
         private Texture2D wallTexture;//fal
         private Texture2D floorTexture;//talaj
         private Texture2D keyTexture;//kulcs
+        private Texture2D gameoverTexture;//gameover
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -52,6 +64,8 @@ namespace Wanderer
             grid.GenerateWalls();
             //Load textures
             LoadTextures();
+            //Load SFX
+            LoadSFX();
             //generate characters
             GenerateCharacters(grid.Rnd.Next(1,4));
 
@@ -69,10 +83,6 @@ namespace Wanderer
                 boss.MoveRandomly(grid);
             }
 
-            if (hero.IsDead)
-            {
-                ChangeState();
-            }
 
             _spriteBatch.End();
             base.Update(gameTime);
@@ -92,6 +102,11 @@ namespace Wanderer
             //Kirajzoljuk a Herot és a statját
             DrawTexture(hero);
             //Kirajzoljuk a Szörnyeket és a statukat
+
+            if (hero.IsDead)
+            {
+                GameOver();
+            }
 
             ShowKey();
 
@@ -131,10 +146,31 @@ namespace Wanderer
             
 
         }
-        private void ChangeState()
+        public void GameOver()
         {
-            _gameState = GameState.Menu;
+            //szöveg méretének beállítása
+            float scale = 1.5f;
+            Vector2 position = new Vector2(700, 570);
+            string text = "Press ESC to leave!";
+
+            //kép, hang és szöveg kirajzolása
+            _spriteBatch.DrawString(textTexture, text, position, Color.Black, 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
+            position = new Vector2(685, 370);
+            _spriteBatch.Draw(gameoverTexture, position, Color.White);
+            if (grid.Walls.Count != 0)      //biztosítsuk, hogy csak egyszer fusson le a hangeffect
+            {
+                gameoverSound.Play();
+            }
+
+            //elemek törlése a pályáról
+            boss.IsDead = true;
+            monsters.Clear();
+            fruits.Clear();
+            grid.Walls.Clear();
+
         }
+
+
         public void NextLevel()
         {
 
@@ -168,6 +204,7 @@ namespace Wanderer
         {
             currentLevel++;
             hero.LevelUp();
+            levelupSound.Play();
             boss.LevelUp();
             boss.HP = boss.MaxHP;
             boss.IsDead = false;
@@ -212,6 +249,7 @@ namespace Wanderer
                     else
                     {
                         hero.LevelUp();
+                        levelupSound.Play();
                         monsters.Remove(monsters[i]);
                     }
                 }
@@ -225,7 +263,8 @@ namespace Wanderer
                 if (keyboardState.IsKeyDown(Keys.Space) && hero.CanFight)
                 {
                     hero.Fight(boss);
-                    boss.Fight(hero);
+                    //boss.Fight(hero);
+                    shootSound.Play();
                     HeroTimer(0.2f);
                     boss.Steps++;
                 }
@@ -237,17 +276,11 @@ namespace Wanderer
                     if (keyboardState.IsKeyDown(Keys.Space) && hero.CanFight)
                     {
                         hero.Fight(monster);
-                        monster.Fight(hero);
+                        //monster.Fight(hero);
+                        shootSound.Play();
                         HeroTimer(0.2f);
                         monster.Steps++;
                     }
-                    /*
-                    if (monster.CanFight)
-                    {
-                        monster.Fight(hero);
-                        Timer(1.2f, monster);
-                    }
-                    */
                 }
             }
             foreach (var fruit in fruits)
@@ -257,6 +290,7 @@ namespace Wanderer
                     if (keyboardState.IsKeyDown(Keys.Space) && hero.CanFight)
                     {
                         hero.Eat(fruit);
+                        eatSound.Play();
                         HeroTimer(0.2f);
                     }
                 }
@@ -308,18 +342,19 @@ namespace Wanderer
             }
             if (keyboardState.IsKeyDown(Keys.Escape))
             {
-                /*
-                using var menu = new Menu();
-                menu.Run();
-                */
+                Exit();
             }
-            //
+            // [[
             if (keyboardState.IsKeyDown(Keys.K) && hero.CanMove)
             {
                 NextLevel();
                 HeroTimer(0.2f);
             }
-            //
+            if (keyboardState.IsKeyDown(Keys.P))
+            {
+                hero.IsDead = true;
+            }
+            // ]]
         }
         public void HeroTimer(float moveDelay)
         {
@@ -351,18 +386,19 @@ namespace Wanderer
         }
         public void DrawTexture(Character character)
         {
-
-            if (character.Texture != null)
+            if (!character.IsDead)
             {
-                _spriteBatch.Draw(character.Texture, character.Position, Color.White);
-                DrawCharacterStats(character);
-            }
-            else
-            {
-                LoadTextures();
+                if (character.Texture != null)
+                {
+                    _spriteBatch.Draw(character.Texture, character.Position, Color.White);
+                    DrawCharacterStats(character);
+                }
+                else
+                {
+                    LoadTextures();
+                }
             }
 
-            
         }
         public void ChangeTexture(Texture2D charTexture, Character character)
         {
@@ -383,6 +419,18 @@ namespace Wanderer
                     _spriteBatch.Draw(floorTexture, item, Color.White);
                 }
             }
+        }
+        public void LoadSFX()
+        {
+            Content.RootDirectory = "Content/sfx";
+            errorSound = Content.Load<SoundEffect>("error");
+            eatSound = Content.Load<SoundEffect>("eat");
+            gameoverSound = Content.Load<SoundEffect>("game_over");
+            levelupSound = Content.Load<SoundEffect>("level_up");
+            shootSound = Content.Load<SoundEffect>("shoot");
+            themeSong = Content.Load<Song>("theme");
+            MediaPlayer.Play(themeSong);
+            MediaPlayer.Volume = 0.2f;
         }
         public void LoadTextures()
         {
@@ -421,8 +469,8 @@ namespace Wanderer
             bossTexture.up = Content.Load<Texture2D>("boss-up");
             bossTexture.left = Content.Load<Texture2D>("boss-left");
             bossTexture.right = Content.Load<Texture2D>("boss-right");
-            */
-            /*
+
+
             grid.LoadHeroTextures(Content);
             grid.LoadMonsterTextures(Content);
             grid.LoadBossTextures(Content);
@@ -433,6 +481,7 @@ namespace Wanderer
             wallTexture = Content.Load<Texture2D>("wall");                      //Wall
             floorTexture = Content.Load<Texture2D>("floor");                    //Floor
             keyTexture = Content.Load<Texture2D>("key");                        //Key
+            gameoverTexture = Content.Load<Texture2D>("gameover");              //Game Over
 
         }
         public void DrawCharacterStats(Character character)

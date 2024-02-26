@@ -108,11 +108,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\FÁJLOK\\Dokumentumok\\Suli\\lionsdale\\c#\\Wanderer\\WandererProject\\Wanderer\\Wanderer.csproj",
+      "projectUniqueName": "C:\\Users\\lugib\\Documents\\GitHub\\WandererProject\\Wanderer\\Wanderer.csproj",
       "projectName": "Wanderer",
-      "projectPath": "F:\\FÁJLOK\\Dokumentumok\\Suli\\lionsdale\\c#\\Wanderer\\WandererProject\\Wanderer\\Wanderer.csproj",
+      "projectPath": "C:\\Users\\lugib\\Documents\\GitHub\\WandererProject\\Wanderer\\Wanderer.csproj",
       "packagesPath": "C:\\Users\\lugib\\.nuget\\packages\\",
-      "outputPath": "F:\\FÁJLOK\\Dokumentumok\\Suli\\lionsdale\\c#\\Wanderer\\WandererProject\\Wanderer\\obj\\",
+      "outputPath": "C:\\Users\\lugib\\Documents\\GitHub\\WandererProject\\Wanderer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

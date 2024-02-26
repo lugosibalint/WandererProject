@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/gameitems/wall.png</SourceFile>
-  <SourceTime>2024-01-17T15:06:38+01:00</SourceTime>
-  <DestFile>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/bin/DesktopGL/gameitems/wall.xnb</DestFile>
-  <DestTime>2024-02-19T14:09:21.533331+01:00</DestTime>
+  <SourceFile>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/gameitems/wall.png</SourceFile>
+  <SourceTime>2024-02-13T13:36:02.839026+01:00</SourceTime>
+  <DestFile>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/bin/DesktopGL/gameitems/wall.xnb</DestFile>
+  <DestTime>2024-02-26T11:29:09.8380522+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

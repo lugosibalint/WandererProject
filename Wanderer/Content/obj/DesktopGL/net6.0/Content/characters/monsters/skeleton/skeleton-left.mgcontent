@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/characters/monsters/skeleton/skeleton-left.png</SourceFile>
-  <SourceTime>2024-02-13T17:09:05.9000157+01:00</SourceTime>
-  <DestFile>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/bin/DesktopGL/Content/characters/monsters/skeleton/skeleton-left.xnb</DestFile>
-  <DestTime>2024-02-19T12:28:35.3027558+01:00</DestTime>
+  <SourceFile>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/characters/monsters/skeleton/skeleton-left.png</SourceFile>
+  <SourceTime>2024-02-26T07:23:40.6831538+01:00</SourceTime>
+  <DestFile>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/bin/DesktopGL/Content/characters/monsters/skeleton/skeleton-left.xnb</DestFile>
+  <DestTime>2024-02-26T07:55:40.7010071+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

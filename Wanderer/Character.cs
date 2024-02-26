@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Wanderer
@@ -54,12 +55,14 @@ namespace Wanderer
                 // Sikeres támadás, csökken az ellenfél HP-ja
                 int damage = attackValue - opponent.DP;
                 opponent.HP -= damage;
+                this.HP -= opponent.SP - DiceRoll(6);
+                
 
                 // Ellenfél HP-ja 0 alatt van akkor meghalt
-                if (opponent.HP <= 0)
-                {
-                    opponent.IsDead = true;
-                }
+                if (opponent.HP <= 0) opponent.IsDead = true;
+
+                if (this.HP <= 0) this.IsDead = true;
+                
             }
         
         }

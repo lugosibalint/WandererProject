@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/characters/hero/hero-up.png</SourceFile>
-  <SourceTime>2024-02-12T08:13:09.2182508+01:00</SourceTime>
-  <DestFile>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/bin/DesktopGL/characters/hero/hero-up.xnb</DestFile>
-  <DestTime>2024-02-19T14:09:21.1099426+01:00</DestTime>
+  <SourceFile>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/characters/hero/hero-up.png</SourceFile>
+  <SourceTime>2024-02-26T07:23:40.5268918+01:00</SourceTime>
+  <DestFile>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/bin/DesktopGL/characters/hero/hero-up.xnb</DestFile>
+  <DestTime>2024-02-26T11:29:07.4594244+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

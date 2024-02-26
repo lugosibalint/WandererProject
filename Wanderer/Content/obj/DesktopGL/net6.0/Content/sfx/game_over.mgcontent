@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/sfx/game_over.mp3</SourceFile>
-  <SourceTime>2024-02-19T13:43:33.1226604+01:00</SourceTime>
-  <DestFile>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/bin/DesktopGL/Content/sfx/game_over.xnb</DestFile>
-  <DestTime>2024-02-19T13:58:05.9887367+01:00</DestTime>
+  <SourceFile>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/sfx/game_over.mp3</SourceFile>
+  <SourceTime>2024-02-26T07:23:42.5167741+01:00</SourceTime>
+  <DestFile>C:/Users/lugib/Documents/GitHub/WandererProject/Wanderer/Content/bin/DesktopGL/Content/sfx/game_over.xnb</DestFile>
+  <DestTime>2024-02-26T10:00:31.4532523+01:00</DestTime>
   <Importer>Mp3Importer</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
-  <Processor>SongProcessor</Processor>
+  <Processor>SoundEffectProcessor</Processor>
   <ProcessorTime>2022-07-26T13:44:56+02:00</ProcessorTime>
   <Parameters>
     <Key>Quality</Key>
@@ -14,7 +14,5 @@
   </Parameters>
   <Dependencies />
   <BuildAsset />
-  <BuildOutput>
-    <string>F:/FÁJLOK/Dokumentumok/Suli/lionsdale/c#/Wanderer/WandererProject/Wanderer/Content/bin/DesktopGL/Content/sfx/game_over.ogg</string>
-  </BuildOutput>
+  <BuildOutput />
 </PipelineBuildEvent>

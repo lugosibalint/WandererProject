@@ -16,6 +16,14 @@ namespace Wanderer
             Steps = 0;
             LastStep = 0;
             StepsPerMove = 1;
+            ShowBoss();
+        }
+        public void ShowBoss()
+        {
+            if (this.Level < 2)
+            {
+                this.IsDead = true;
+            }
         }
     }
 }

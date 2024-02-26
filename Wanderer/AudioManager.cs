@@ -10,17 +10,12 @@ namespace Wanderer
 {
     public class AudioManager
     {
-        private SoundEffect soundEffect;
-
-        public AudioManager(ContentManager content, string soundPath)
+        private ContentManager content;
+        public SoundEffect error;
+        public AudioManager()
         {
-            soundEffect = content.Load<SoundEffect>(soundPath);
-        }
-
-        public void PlaySoundEffect()
-        {
-            SoundEffectInstance soundInstance = soundEffect.CreateInstance();
-            soundInstance.Play();
+            content.RootDirectory = "Content/sfx";
+            error = content.Load<SoundEffect>("error");
         }
     }
 }

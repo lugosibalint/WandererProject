@@ -58,7 +58,6 @@ namespace Wanderer
                 }
             }
         }
-
         public bool IsWall(Vector2 vector)
         {
             if (Walls.Contains(vector))
@@ -101,7 +100,7 @@ namespace Wanderer
         }
         public CharacterTextures LoadMonsterTextures(ContentManager Content)
         {
-            string[] txt = File.ReadAllLines("texturelist.txt");
+            string[] txt = File.ReadAllLines("monsterlist.txt");
             string pickedLine = txt[Rnd.Next(1, txt.Length)];
             Content.RootDirectory = $"Content/characters/monsters/{pickedLine}";
             CharacterTextures monsterTextures = new CharacterTextures();

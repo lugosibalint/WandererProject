@@ -512,6 +512,18 @@
 /processorParam:TextureFormat=Color
 /build:gameitems/fruits/watermelon/watermelon-up.png
 
+#begin gameitems/gameover.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:gameitems/gameover.png
+
 #begin gameitems/key.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -538,31 +550,37 @@
 
 #begin sfx/eat.mp3
 /importer:Mp3Importer
-/processor:SongProcessor
+/processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:sfx/eat.mp3
 
 #begin sfx/error.mp3
 /importer:Mp3Importer
-/processor:SongProcessor
+/processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:sfx/error.mp3
 
 #begin sfx/game_over.mp3
 /importer:Mp3Importer
-/processor:SongProcessor
+/processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:sfx/game_over.mp3
 
 #begin sfx/level_up.mp3
 /importer:Mp3Importer
-/processor:SongProcessor
+/processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:sfx/level_up.mp3
 
 #begin sfx/shoot.mp3
 /importer:Mp3Importer
-/processor:SongProcessor
+/processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:sfx/shoot.mp3
+
+#begin sfx/theme.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sfx/theme.mp3
 
